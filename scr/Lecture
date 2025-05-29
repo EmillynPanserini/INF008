@@ -1,0 +1,4 @@
+public class Lecture extends AcademicEvents{
+
+
+}

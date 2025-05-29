@@ -1,0 +1,33 @@
+public class AcademicEvents {
+    private String titles;
+    private String date;
+    private String place;
+    private int numberParticipates;
+    private String description;
+
+
+    public void registerEvents (){
+        Menu menu = new Menu();
+
+        int menuReturn = menu.menuRegisterEvents();
+        switch(menuReturn){
+            case 1:
+                // create a new lecture
+                break;
+            case 2:
+                // create a new Workshop
+                break;
+            case 3:
+                // create a new academic fair
+                break;
+            case 4:
+                // create a new short courses
+                break;
+            default:{
+                System.out.println("Insert a valid option");
+                menu.menuRegisterEvents();
+            }
+        }
+
+    }
+}

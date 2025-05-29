@@ -1,0 +1,6 @@
+public class Main{
+    public static void main (String[] args) {
+        AcademicEvents event1 = new AcademicEvents();
+        event1.registerEvents();
+    }
+}
