@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Menu {
+class Menu {
     // posso add  InputMismatchException para melhorar o código.
 
     public int menuRegisterEvents(){

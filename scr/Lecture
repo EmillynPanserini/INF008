@@ -1,4 +1,4 @@
-public class Lecture extends AcademicEvents{
+class Lecture extends AcademicEvents{
 
 
 }

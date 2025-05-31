@@ -1,4 +1,4 @@
-public class AcademicEvents {
+class AcademicEvents {
     private String titles;
     private String date;
     private String place;
