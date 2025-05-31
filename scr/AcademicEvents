@@ -1,0 +1,16 @@
+class AcademicEvents {
+    private String titles;
+    private String date;
+    private String place;
+    private int numberParticipates;
+    private String description;
+
+
+    public void registerEvents (){
+        Menu menu = new Menu();
+
+        menu.menuRegisterEvents();
+        
+
+    }
+}
