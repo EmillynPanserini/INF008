@@ -3,15 +3,30 @@ import java.util.Scanner;
 class Menu {
     // posso add  InputMismatchException para melhorar o código.
 
-    public int menuRegisterEvents(){
+    public void menuRegisterEvents(){
         Scanner sc = new Scanner(System.in);
         System.out.println("What do u wanna to do?\n");
         System.out.println("Register a:\n");
         System.out.println("1. Lecture\n 2. Workshop\n 3. Academic Fair\n 4. Short Courses\n  ");
 
-        return  sc.nextInt();
-
-
-
+        int returnMenu =  sc.nextInt();
+        switch(returnMenu){
+            case 1:
+                // create a new lecture
+                break;
+            case 2:
+                // create a new Workshop
+                break;
+            case 3:
+                // create a new academic fair
+                break;
+            case 4:
+                // create a new short courses
+                break;
+            default:{
+                System.out.println("Insert a valid option");
+                menu.menuRegisterEvents();
+            }
+        }
     }
 }
