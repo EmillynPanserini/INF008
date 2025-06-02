@@ -1,0 +1,28 @@
+package scr;
+
+import java.util.ArrayList;
+
+class Lecture extends AcademicEvents {
+    private String speaker;
+
+
+    // metododo
+    void registerLecture() {
+
+    }
+
+    public String getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(String speaker) {
+        this.speaker = speaker;
+    }
+
+    @Override
+    String getEventTypeDetails() {
+        return "Lecture given by" + speaker;
+    }
+
+
+}
