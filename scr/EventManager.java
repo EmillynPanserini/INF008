@@ -10,54 +10,31 @@ public class EventManager {
     private boolean validDate = false;
     private boolean validCapacity = false;
     private List<AcademicEvents> events;
+    private Scanner sc;
 
+    public EventManager(){
+         this.sc = new Scanner(System.in);
+    }
 
-    void registerEvents (){
-        Scanner sc = new Scanner(System.in);
+    void registerLecture (){
 
-        System.out.println("\n--- Registering a New Event ---\n");
+        System.out.println("\n--- Registering a New Lecture ---\n");
 
-        System.out.print("Enter the Title: ");
-        String title = sc.nextLine();
+        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
 
+        System.out.print("Enter Speaker Name: ");
+        String speaker = sc.nextLine();
 
-        while (!validDate) {
-            System.out.print("Enter Date (YYYY-MM-DD): ");
-            String dateStr = sc.nextLine();
-            try {
-                LocalDate date = LocalDate.parse(dateStr);
-                validDate = true;
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format.\n");
-            }
-        }
+        Lecture newLecture = new Lecture();
+        this.events.add(newLecture);
+        System.out.println("\nLecture \"" + commonDetails.title() + "\" registered!");
+    }
 
-        System.out.print("Enter Location: ");
-        String place = sc.nextLine();
-
-        while (!validCapacity) {
-            System.out.print("Enter Capacity: ");
-            try {
-                int capacity = sc.nextInt();
-                if (capacity > 0) {
-                    validCapacity = true;
-                } else {
-                    System.out.println("Capacity must be a positive number.");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number for capacity.");
-                sc.next();
-            }
-        }
-
-        System.out.print("Enter Description: ");
-        String description = sc.nextLine();
-
-        //AcademicEvents newAcademicEvent = new AcademicEvents();
-
-
-        //this.events.add(AcademicEvent);
-
-        sc.close();
+    void registerWorkshop(){
+        System.out.println("\n--- Registering a New Workshop ---\n");
+        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
+        Workshop newWorkshop = new Workshop();
+        this.events.add(newWorkshop);
+        System.out.println("\nWorkshop \"" + commonDetails.title() + "\" registered!");
     }
 }

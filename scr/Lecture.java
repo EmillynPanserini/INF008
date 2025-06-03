@@ -5,12 +5,6 @@ import java.util.ArrayList;
 class Lecture extends AcademicEvents {
     private String speaker;
 
-
-    // metododo
-    void registerLecture() {
-
-    }
-
     public String getSpeaker() {
         return speaker;
     }
