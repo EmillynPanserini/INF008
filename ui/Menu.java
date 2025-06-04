@@ -12,9 +12,9 @@ public class Menu {
         boolean validInput = false;
 
         while (!validInput) {
-            System.out.println("What do you want to do?\n");
+            System.out.println("\nWhat do you wanna do?\n");
             System.out.println("Register a:\n");
-            System.out.println( "1.Lecture\n " +
+            System.out.println(" 1. Lecture\n " +
                                 "2. Workshop\n " +
                                 "3. Academic Fair\n " +
                                 "4. Short Courses\n  ");
@@ -37,13 +37,16 @@ public class Menu {
                 newLecture.registerLecture();
                 break;
             case 2:
-                // Call method or logic to register a workshop
+                EventManager newWorkshop = new EventManager();
+                newWorkshop.registerWorkshop();
                 break;
             case 3:
-                // Call method or logic to register an academic fair
+                EventManager newAcademicFair = new EventManager();
+                newAcademicFair.registerAcademicFair();
                 break;
             case 4:
-                // Call method or logic to register short courses
+                EventManager newShortCourse = new EventManager();
+                newShortCourse.registerShortCourse();
                 break;
             default:
                 System.out.println("An unexpected error occurred with your selection.");

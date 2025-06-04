@@ -1,8 +1,3 @@
 package scr;
 
-public class AcademicFair extends AcademicEvents{
-    @Override
-    String getEventTypeDetails() {
-        return "";
-    }
-}
+public class AcademicFair extends AcademicEvents{}

@@ -70,6 +70,4 @@ public abstract class AcademicEvents {
 
     }
 
-    abstract String getEventTypeDetails();
-
 }
