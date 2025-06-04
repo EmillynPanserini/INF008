@@ -13,15 +13,16 @@ public abstract class AcademicEvents {
     protected String location;
     protected int capacity = 0;
     protected String description;
-    private static Scanner sc;
 
-    public AcademicEvents(){
-        sc = new Scanner(System.in);
-    }
+
+
     public record EventCommonDetails(String title, LocalDate date, String location, int capacity,
                                      String description) {}
 
     public static EventCommonDetails collectCommonEventDetails() {
+
+        Scanner sc = new Scanner(System.in);
+
         System.out.print("Enter Title: ");
         String title = sc.nextLine();
 
