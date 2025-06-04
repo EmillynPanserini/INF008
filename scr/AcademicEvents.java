@@ -69,5 +69,4 @@ public abstract class AcademicEvents {
         return new EventCommonDetails(title, date, location, capacity, description);
 
     }
-
 }

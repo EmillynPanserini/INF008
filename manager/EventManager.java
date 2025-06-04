@@ -18,12 +18,9 @@ public class EventManager {
     public void registerLecture (){
 
         System.out.println("\n--- Registering a New Lecture ---\n");
-
         AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
-
         System.out.print("Enter Speaker Name: ");
         String speaker = sc.nextLine();
-
         Lecture newLecture = new Lecture();
         this.events.add(newLecture);
         System.out.println("\nLecture \"" + commonDetails.title() + "\" registered!");
