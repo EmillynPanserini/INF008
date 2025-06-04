@@ -1,4 +1,4 @@
-package scr;
+package participants;
 
 class Participant {
     private String name;

@@ -1,14 +1,10 @@
-package scr;
+package manager;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
+import scr.*;
 import java.util.List;
 import java.util.Scanner;
 
 public class EventManager {
-    private boolean validDate = false;
-    private boolean validCapacity = false;
     private List<AcademicEvents> events;
     private Scanner sc;
 
@@ -16,7 +12,7 @@ public class EventManager {
          this.sc = new Scanner(System.in);
     }
 
-    void registerLecture (){
+    public void registerLecture (){
 
         System.out.println("\n--- Registering a New Lecture ---\n");
 
@@ -37,4 +33,20 @@ public class EventManager {
         this.events.add(newWorkshop);
         System.out.println("\nWorkshop \"" + commonDetails.title() + "\" registered!");
     }
+
+    void registerAcademicFair(){
+        System.out.println("\n--- Registering a New Academic Fair ---\n");
+        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
+        AcademicFair newAcademicFair = new AcademicFair();
+        this.events.add(newAcademicFair);
+        System.out.println("\nAcademic Fair \"" + commonDetails.title() + "\" registered!");
+    }
+    void registerShortCourse(){
+        System.out.println("\n--- Registering a New Short Course---\n");
+        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
+        ShortCourse newShortCourse = new ShortCourse();
+        this.events.add(newShortCourse);
+        System.out.println("\nShort Course \"" + commonDetails.title() + "\" registered!");
+    }
+
 }

@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 
-abstract class AcademicEvents {
+public abstract class AcademicEvents {
     protected  String title;
     protected LocalDate date = null;
     protected String location;
@@ -18,8 +18,8 @@ abstract class AcademicEvents {
     public AcademicEvents(){
         sc = new Scanner(System.in);
     }
-    protected record EventCommonDetails(String title, LocalDate date, String location, int capacity,
-                                        String description) {}
+    public record EventCommonDetails(String title, LocalDate date, String location, int capacity,
+                                     String description) {}
 
     public static EventCommonDetails collectCommonEventDetails() {
         System.out.print("Enter Title: ");

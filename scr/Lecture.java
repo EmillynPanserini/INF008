@@ -2,7 +2,7 @@ package scr;
 
 import java.util.ArrayList;
 
-class Lecture extends AcademicEvents {
+public class Lecture extends AcademicEvents {
     private String speaker;
 
     public String getSpeaker() {

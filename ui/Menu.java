@@ -1,5 +1,6 @@
-package scr;
+package ui;
 
+import manager.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -32,7 +33,8 @@ public class Menu {
         }
         switch (choiceMenu) {
             case 1:
-                // Call method or logic to register a lecture
+                EventManager newLecture = new EventManager();
+                newLecture.registerLecture();
                 break;
             case 2:
                 // Call method or logic to register a workshop
