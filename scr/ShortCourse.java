@@ -6,7 +6,7 @@ public class ShortCourse extends AcademicEvents{
     public String getInstructor() {
         return instructor;
     }
-    public void setInstructor() {
+    public void setInstructor(String instructor) {
         this.instructor = instructor;
     }
 

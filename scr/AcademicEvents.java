@@ -1,12 +1,8 @@
-// scr/AcademicEvents.java
 package scr;
 
-import manager.ValidInformation; // Import ValidInformation to use its methods
-
+import manager.ValidInformation;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-// import java.util.InputMismatchException; // Not directly needed if ValidInformation handles it
-// import java.util.Scanner; // Not directly needed if ValidInformation handles it
 
 public abstract class AcademicEvents {
     private   String title;

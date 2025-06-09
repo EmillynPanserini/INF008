@@ -1,16 +1,10 @@
 package manager;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ValidInformation {
-    private static Scanner sc;
-
-    public ValidInformation(){
-        this.sc = new Scanner(System.in);
-    }
+    private static Scanner sc = new Scanner(System.in);
 
     public static int readIntInput(String choice) {
         while (true) {
@@ -28,5 +22,4 @@ public class ValidInformation {
         System.out.print(choice);
         return sc.nextLine();
     }
-
 }

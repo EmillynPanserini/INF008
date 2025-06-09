@@ -1,4 +1,3 @@
-// ui/Menu.java
 package ui;
 
 import manager.*;
@@ -71,7 +70,7 @@ public class Menu {
             case 3:
                 newEvent = new ShortCourse();
                 String instructorName = ValidInformation.readStringInput("Enter short course instructor: ");
-                ((ShortCourse) newEvent).setInstructor();
+                ((ShortCourse) newEvent).setInstructor(instructorName);
                 break;
             case 4:
                 newEvent = new Workshop();
