@@ -1,3 +1,4 @@
+// ui/Menu.java
 package ui;
 
 import manager.*;
@@ -24,7 +25,7 @@ public class Menu {
                     addEvent();
                     break;
                 case 2:
-                    //implementar report Event
+                    System.out.println("Reporting events is not yet implemented.");
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -56,19 +57,23 @@ public class Menu {
         int type = ValidInformation.readIntInput("Enter event type (1-4): ");
 
         AcademicEvents newEvent = null;
+        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
+
         switch (type) {
             case 1:
                 newEvent = new AcademicFair();
                 break;
             case 2:
-                Lecture speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
                 newEvent = new Lecture();
+                String speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
+                ((Lecture) newEvent).setSpeaker(speaker); // Correctly sets speaker on Lecture object
                 break;
             case 3:
                 newEvent = new ShortCourse();
+                String instructorName = ValidInformation.readStringInput("Enter short course instructor: ");
+                ((ShortCourse) newEvent).setInstructor();
                 break;
             case 4:
-                capacity = ValidInformation.readIntInput("Enter workshop capacity: ");
                 newEvent = new Workshop();
                 break;
             default:
@@ -76,6 +81,14 @@ public class Menu {
                 return;
         }
 
-        eventManager.addEvent(newEvent);
+        if (newEvent != null) {
+            newEvent.setTitle(commonDetails.title());
+            newEvent.setDate(commonDetails.date());
+            newEvent.setLocation(commonDetails.location());
+            newEvent.setCapacity(commonDetails.capacity());
+            newEvent.setDescription(commonDetails.description());
+
+            eventManager.addEvent(newEvent);
+        }
     }
 }
