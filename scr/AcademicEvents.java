@@ -1,72 +1,63 @@
 package scr;
 
-import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
 import java.time.LocalDate;
 
 
 public abstract class AcademicEvents {
-    protected  String title;
-    protected LocalDate date = null;
-    protected String location;
-    protected int capacity = 0;
-    protected String description;
+    private   String title;
+    private  LocalDate date = null;
+    private  String location;
+    private  int capacity;
+    private  String description;
 
-
-
-    public record EventCommonDetails(String title, LocalDate date, String location, int capacity,
-                                     String description) {}
-
-    public static EventCommonDetails collectCommonEventDetails() {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter Title: ");
-        String title = sc.nextLine();
-
-        LocalDate date = null;
-        boolean validDate = false;
-        while (!validDate) {
-            System.out.print("Enter Date (YYYY-MM-DD): ");
-            String dateStr = sc.nextLine();
-            try {
-                date = LocalDate.parse(dateStr);
-                validDate = true;
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Insert again");
-                sc.nextLine();
-            }
-        }
-
-        System.out.print("Enter Location: ");
-        String location = sc.nextLine();
-
-        boolean validCapacity = false;
-        int capacity = 0;
-        while (!validCapacity) {
-            System.out.print("Enter Capacity: ");
-            try {
-                capacity = sc.nextInt();
-                if (capacity > 0) {
-                    validCapacity = true;
-                } else {
-                    System.out.println("Capacity must be a positive number. Insert again");
-                    sc.nextInt();
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Insert again");
-                sc.next();
-            } finally {
-                sc.nextLine();
-            }
-        }
-
-        System.out.print("Enter Description: ");
-        String description = sc.nextLine();
-
-        return new EventCommonDetails(title, date, location, capacity, description);
-
+    public String getTitle() {
+        return title;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public abstract void displayDetails();
+
+    @Override
+    public String toString() {
+        return "Event Title: " + title +
+                ", Date: " + date +
+                ", Location: " + location +
+                ", Description: " + description +
+                ", Capacity: " + capacity;
+    }
+
 }

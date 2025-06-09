@@ -7,7 +7,7 @@ public class Main{
         Lecture event1 = new Lecture();
         Menu menu = new Menu();
 
-        menu.menuRegisterEvents();
+        menu.run();
         //event1.registerEvents();
     }
 }

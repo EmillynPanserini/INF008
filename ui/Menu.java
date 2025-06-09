@@ -1,56 +1,81 @@
 package ui;
 
 import manager.*;
-import java.util.InputMismatchException;
+import scr.*;
 import java.util.Scanner;
 
 public class Menu {
+    private EventManager eventManager;
+    private Scanner sc;
 
-    public void menuRegisterEvents() {
-        Scanner sc = new Scanner(System.in);
-        int choiceMenu = -1;
-        boolean validInput = false;
+    public Menu() {
+        this.eventManager = new EventManager();
+        this.sc = new Scanner(System.in);
+    }
 
-        while (!validInput) {
-            System.out.println("\nWhat do you wanna do?\n");
-            System.out.println("Register a:\n");
-            System.out.println(" 1. Lecture\n " +
-                                "2. Workshop\n " +
-                                "3. Academic Fair\n " +
-                                "4. Short Courses\n  ");
+    public void run() {
+        int option;
+        do {
+            printMenu();
+            option = ValidInformation.readIntInput("Enter your choice: ");
 
-            try {
-                choiceMenu = sc.nextInt();
-                if (choiceMenu >= 1 && choiceMenu <= 4) {
-                    validInput = true; //
-                } else {
-                    System.out.println("Invalid option. Please enter a number between 1 and 4.");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number (1, 2, 3, 4).");
-                sc.next();
+            switch (option) {
+                case 1:
+                    addEvent();
+                    break;
+                case 2:
+                    //implementar report Event
+                    break;
+                case 0:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
-        }
-        switch (choiceMenu) {
+        } while (option != 0);
+        sc.close();
+    }
+
+    private void printMenu() {
+        System.out.println("\n--- Academic Events Manager ---");
+        System.out.println("1. Add New Event");
+        System.out.println("2. Report Event");
+        System.out.println("0. Exit");
+        System.out.println("-----------------------------");
+    }
+
+
+    private void addEvent() {
+        System.out.println("\n--- Add New Event ---");
+        System.out.println("\nSelect Event Type:");
+
+        System.out.println("1. Academic Fair");
+        System.out.println("2. Lecture");
+        System.out.println("3. Short Course");
+        System.out.println("4. Workshop");
+        int type = ValidInformation.readIntInput("Enter event type (1-4): ");
+
+        AcademicEvents newEvent = null;
+        switch (type) {
             case 1:
-                EventManager newLecture = new EventManager();
-                newLecture.registerLecture();
+                newEvent = new AcademicFair();
                 break;
             case 2:
-                EventManager newWorkshop = new EventManager();
-                newWorkshop.registerWorkshop();
+                Lecture speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
+                newEvent = new Lecture();
                 break;
             case 3:
-                EventManager newAcademicFair = new EventManager();
-                newAcademicFair.registerAcademicFair();
+                newEvent = new ShortCourse();
                 break;
             case 4:
-                EventManager newShortCourse = new EventManager();
-                newShortCourse.registerShortCourse();
+                capacity = ValidInformation.readIntInput("Enter workshop capacity: ");
+                newEvent = new Workshop();
                 break;
             default:
-                System.out.println("An unexpected error occurred with your selection.");
+                System.out.println("Invalid event type. Event not added.");
+                return;
         }
-        sc.close();
+
+        eventManager.addEvent(newEvent);
     }
 }
