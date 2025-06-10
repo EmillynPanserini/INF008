@@ -3,8 +3,15 @@ package scr.events;
 import scr.participants.Participant;
 import scr.ui.Registrable;
 
+import java.time.LocalDate;
+
 public class AcademicFair extends AcademicEvents implements Registrable {
     private int registeredParticipantsCount = 0;
+
+    public AcademicFair(String title, LocalDate date, String location, int capacity, String description) {
+        super(title, date, location, capacity, description);
+    }
+
     @Override
     public void displayDetails() {
         System.out.println("--- Academic Fair Details ---");

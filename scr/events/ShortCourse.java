@@ -3,9 +3,15 @@ package scr.events;
 import scr.participants.Participant;
 import scr.ui.Registrable;
 
+import java.time.LocalDate;
+
 public class ShortCourse extends AcademicEvents implements Registrable {
     private String instructor;
     private int registeredParticipantsCount = 0;
+
+    public ShortCourse(String title, LocalDate date, String location, int capacity, String description) {
+        super(title, date, location, capacity, description);
+    }
 
     public String getInstructor() {
         return instructor;

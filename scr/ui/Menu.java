@@ -72,8 +72,6 @@ public class Menu {
         AcademicEvents newEvent = null;
 
         EventCommonDetails commonDetails = EventInputReader.collectCommonEventDetails();
-
-
         String title = commonDetails.title();
         LocalDate date = commonDetails.date();
         String location = commonDetails.location();
@@ -82,29 +80,28 @@ public class Menu {
 
         switch (type) {
             case 1:
-                newEvent = new AcademicFair();
+                newEvent = new AcademicFair(title, date, location, capacity, description);
                 break;
             case 2:
                 String speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
-                newEvent = new Lecture();
+                newEvent = new Lecture(title, date, location, capacity, description);
                 ((Lecture) newEvent).setSpeaker(speaker);
                 break;
             case 3:
                 String instructorName = ValidInformation.readStringInput("Enter short course instructor: ");
-                newEvent = new ShortCourse();
+                newEvent = new ShortCourse(title, date, location, capacity, description);
                 ((ShortCourse) newEvent).setInstructor(instructorName);
                 break;
             case 4:
-                newEvent = new Workshop();
+                newEvent = new Workshop(title, date, location, capacity, description);
                 break;
             default:
                 System.out.println("Invalid event type. Event not added.");
                 return;
         }
-
         eventManager.addEvent(newEvent);
-
     }
+
     void addParticipant() {
         final String participantMenu = """
                 --- Add New Participant: ---
@@ -140,7 +137,6 @@ public class Menu {
                 System.out.println("Invalid participant type. Participant not added.");
                 return;
         }
-
 
         newParticipant.setName(name);
         newParticipant.setEmail(email);
