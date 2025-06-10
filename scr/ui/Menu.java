@@ -8,14 +8,12 @@ import java.util.Scanner;
 
 public class Menu {
     private EventManager eventManager;
-    private Scanner sc;
     private int type;
     private ParticipantManager  participantManager;
 
     public Menu() {
         this.eventManager = new EventManager();
         this.participantManager = new ParticipantManager();
-        this.sc = new Scanner(System.in);
     }
 
     void run() {
@@ -41,27 +39,30 @@ public class Menu {
                     System.out.println("Invalid option. Please try again.");
             }
         } while (option != 0);
-        sc.close();
     }
 
     void printMenu() {
-        System.out.println("\n--- Academic Events Manager ---");
-        System.out.println("1. Add New Event");
-        System.out.println("2. Report Event");
-        System.out.println("3. Add participant");
-        System.out.println("0. Exit");
-        System.out.println("-----------------------------");
+        final String menu = """
+                --- Academic Events Manager ---
+                1. Add New Event
+                2. Report Event
+                3. Add participant
+                0. Exit
+                -----------------------------
+                """;
+        System.out.println(menu);
     }
-
-    void eventType(){
-        System.out.println("\nSelect Event Type:");
-
-        System.out.println("1. Academic Fair");
-        System.out.println("2. Lecture");
-        System.out.println("3. Short Course");
-        System.out.println("4. Workshop");
+    void eventType() {
+        final String eventType = """
+                --- Select Event Type: ---
+                1. Academic Fair
+                2. Lecture
+                3. Short Course
+                0. Workshop
+                -----------------------------
+                """;
+        System.out.println(eventType);
     }
-
 
     void addEvent() {
         System.out.println("\n--- Add New Event ---");
@@ -69,8 +70,7 @@ public class Menu {
         type = ValidInformation.readIntInput("Enter event type (1-4): ");
 
         AcademicEvents newEvent = null;
-        AcademicEvents.EventCommonDetails commonDetails = AcademicEvents.collectCommonEventDetails();
-
+        EventInputReader.collectCommonEventDetails() commonDetails = EventInputReader.collectCommonEventDetails();
         switch (type) {
             case 1:
                 newEvent = new AcademicFair();
@@ -93,23 +93,26 @@ public class Menu {
                 return;
         }
 
-        if (newEvent != null) {
-            newEvent.setTitle(commonDetails.title());
-            newEvent.setDate(commonDetails.date());
-            newEvent.setLocation(commonDetails.location());
-            newEvent.setCapacity(commonDetails.capacity());
-            newEvent.setDescription(commonDetails.description());
+        newEvent.setTitle(EventCommonDetails.title());
+        newEvent.setDate(EventCommonDetails.date());
+        newEvent.setLocation(EventCommonDetails.location());
+        newEvent.setCapacity(EventCommonDetails.capacity());
+        newEvent.setDescription(EventCommonDetails.description());
+        eventManager.addEvent(newEvent);
 
-            eventManager.addEvent(newEvent);
-        }
     }
     void addParticipant() {
-        System.out.println("\n--- Add New Participant ---");
-        System.out.println("\nSelect Participant Type:");
+        final String participantMenu = """
+                --- Add New Participant: ---
+                --- Select Participant Type: ---
+                1. Student
+                2. Professor
+                3. Short Course
+                0. External
+                -----------------------------
+                """;
+        System.out.println(participantMenu);
 
-        System.out.println("1. Student");
-        System.out.println("2. Professor");
-        System.out.println("3. External");
         type = ValidInformation.readIntInput("Enter participant type (1-3): ");
 
         String name = ValidInformation.readStringInput("Enter name: ");
@@ -135,16 +138,10 @@ public class Menu {
                 return;
         }
 
-        if (newParticipant != null) {
-            newParticipant.setName(name);
-            newParticipant.setEmail(email);
-            participantManager.addParticipant(newParticipant);
-        }
 
-        /*
-        eventType();
-        type = ValidInformation.readIntInput("Enter event type (1-4): ");
+        newParticipant.setName(name);
+        newParticipant.setEmail(email);
+        participantManager.addParticipant(newParticipant);
 
-         */
     }
 }

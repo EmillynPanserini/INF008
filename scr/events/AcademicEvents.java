@@ -1,15 +1,27 @@
 package scr.events;
 
-import scr.manager.ValidInformation;
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 
 public abstract class AcademicEvents {
-    private   String title;
-    private  LocalDate date = null;
-    private  String location;
-    private  int capacity;
-    private  String description;
+    private final String title;
+    private final LocalDate date;
+    private final String location;
+    private final int capacity;
+    private final String description;
+
+    public AcademicEvents(String title, LocalDate date, String location, int capacity, String description) {
+        if (title == null || title.isBlank()) throw new IllegalArgumentException("Title is required.");
+        if (date == null) throw new IllegalArgumentException("Date is required.");
+        if (location == null || location.isBlank()) throw new IllegalArgumentException("Location is required.");
+        if (capacity <= 0) throw new IllegalArgumentException("Capacity must be positive.");
+        if (description == null) description = "";
+
+        this.title = title;
+        this.date = date;
+        this.location = location;
+        this.capacity = capacity;
+        this.description = description;
+    }
 
     public String getTitle() {
         return title;
@@ -23,67 +35,12 @@ public abstract class AcademicEvents {
         return location;
     }
 
-    public String getDescription() {
-        return description;
-    }
     public int getCapacity() {
         return capacity;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-    public record EventCommonDetails(String title, LocalDate date, String location, int capacity,
-                                     String description) {}
-
-    public static EventCommonDetails collectCommonEventDetails() {
-
-        String title = ValidInformation.readStringInput("Enter Title: ");
-
-        LocalDate date = null;
-        boolean validDate = false;
-        while (!validDate) {
-            String dateStr = ValidInformation.readStringInput("Enter Date (YYYY-MM-DD): ");
-            try {
-                date = LocalDate.parse(dateStr);
-                validDate = true;
-            } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Insert again");
-            }
-        }
-
-        String location = ValidInformation.readStringInput("Enter Location: ");
-
-        boolean validCapacity = false;
-        int capacity = 0;
-        while (!validCapacity) {
-            capacity = ValidInformation.readIntInput("Enter Capacity: ");
-            if (capacity > 0) {
-                validCapacity = true;
-            } else {
-                System.out.println("Capacity must be a positive number. Insert again");
-            }
-        }
-
-        String description = ValidInformation.readStringInput("Enter Description: ");
-
-        return new EventCommonDetails(title, date, location, capacity, description);
+    public String getDescription() {
+        return description;
     }
 
     public abstract void displayDetails();
