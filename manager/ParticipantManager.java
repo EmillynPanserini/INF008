@@ -65,7 +65,6 @@ public class ParticipantManager implements Registrable {
                     if (participantIndex > 0 && participantIndex <= allParticipants.size()) {
                         Participant selectedParticipant = allParticipants.get(participantIndex - 1);
 
-                        // call registerParticipant interface Registrable
                         if (registrableEvent.registerParticipant(selectedParticipant)) {
                             System.out.println("Participant registered successfully to " + selectedEvent.getTitle());
                         }
@@ -85,17 +84,6 @@ public class ParticipantManager implements Registrable {
     }
 
 
-    /*@Override
-    public boolean registerParticipant(Participant participant) {
-        if (registeredParticipantsCount < getCapacity()) {
-            registeredParticipantsCount++;
-            System.out.println("Participant " + participant.getName() + " registrated: " + title);
-            return true;
-        } else {
-            System.out.println("Full event: " + title);
-            return false;
-        }
-    }*/
     @Override
     public boolean registerParticipant(Participant participant){return false;}
 

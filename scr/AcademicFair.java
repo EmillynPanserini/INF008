@@ -20,7 +20,7 @@ public class AcademicFair extends AcademicEvents implements Registrable {
     public boolean registerParticipant(Participant participant) {
         if (registeredParticipantsCount < getCapacity()) {
             registeredParticipantsCount++;
-            System.out.println("Participant " + participant.getName() + " registrated: " + getTitle());
+            System.out.println("Participant " + participant.getName() + " registered: " + getTitle());
             return true;
         } else {
             System.out.println("Full event: " + getTitle());
