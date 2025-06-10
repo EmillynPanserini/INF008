@@ -1,8 +1,11 @@
 package scr;
 
-public class Lecture extends AcademicEvents {
-    private String speaker;
+import participants.Participant;
+import ui.Registrable;
 
+public class Lecture extends AcademicEvents implements Registrable {
+    private String speaker;
+    private int registeredParticipantsCount = 0;
 
     public String getSpeaker() {
         return speaker;
@@ -28,5 +31,27 @@ public class Lecture extends AcademicEvents {
     public String toString() {
         return super.toString() +
                 ", Speaker: " + speaker;
+    }
+
+    @Override
+    public boolean registerParticipant(Participant participant) {
+        if (registeredParticipantsCount < getCapacity()) {
+            registeredParticipantsCount++;
+            System.out.println("Participant " + participant.getName() + " registrated: " + getTitle());
+            return true;
+        } else {
+            System.out.println("Full event: " + getTitle());
+            return false;
+        }
+    }
+
+    @Override
+    public int getAvailableSlots() {
+        return getCapacity() - registeredParticipantsCount;
+    }
+
+    @Override
+    public int getTotalCapacity() {
+        return getCapacity();
     }
 }

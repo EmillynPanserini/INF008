@@ -1,6 +1,6 @@
 package participants;
 
-abstract class Participant {
+public abstract class Participant {
     private String name;
     private String email;
 
