@@ -1,4 +1,4 @@
-package participants;
+package scr.participants;
 
 public class Student extends Participant{
     private String registration;

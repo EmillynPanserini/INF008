@@ -1,4 +1,4 @@
-package participants;
+package scr.participants;
 
 public abstract class Participant {
     private String name;

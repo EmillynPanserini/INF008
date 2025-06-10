@@ -1,6 +1,6 @@
-package ui;
+package scr.ui;
 
-import participants.Participant;
+import scr.participants.Participant;
 
 public interface Registrable {
     boolean registerParticipant(Participant participant);

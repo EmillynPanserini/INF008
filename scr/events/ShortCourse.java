@@ -1,7 +1,7 @@
-package scr;
+package scr.events;
 
-import participants.Participant;
-import ui.Registrable;
+import scr.participants.Participant;
+import scr.ui.Registrable;
 
 public class ShortCourse extends AcademicEvents implements Registrable {
     private String instructor;

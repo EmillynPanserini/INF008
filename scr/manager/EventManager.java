@@ -1,7 +1,8 @@
-// manager/EventManager.java
-package manager;
+// scr.manager/EventManager.java
+package scr.manager;
 
-import scr.*;
+import scr.events.AcademicEvents;
+
 import java.util.*;
 
 public class EventManager {

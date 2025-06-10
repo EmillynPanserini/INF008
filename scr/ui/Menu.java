@@ -1,8 +1,9 @@
-package ui;
+package scr.ui;
 
-import manager.*;
-import participants.*;
-import scr.*;
+import scr.events.*;
+import scr.manager.*;
+import scr.participants.*;
+
 import java.util.Scanner;
 
 public class Menu {

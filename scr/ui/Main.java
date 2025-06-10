@@ -1,6 +1,6 @@
-package ui;
+package scr.ui;
 
-import scr.Lecture;
+import scr.events.Lecture;
 
 public class Main{
     public static void main (String[] args) {

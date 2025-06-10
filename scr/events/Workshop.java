@@ -1,38 +1,21 @@
-package scr;
+package scr.events;
 
-import participants.Participant;
-import ui.Registrable;
+import scr.participants.Participant;
+import scr.ui.Registrable;
 
-public class Lecture extends AcademicEvents implements Registrable {
-    private String speaker;
+public class Workshop extends AcademicEvents implements Registrable {
     private int registeredParticipantsCount = 0;
-
-    public String getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(String speaker) {
-        this.speaker = speaker;
-    }
 
     @Override
     public void displayDetails() {
-        System.out.println("--- Lecture Details ---");
+        System.out.println("--- Workshop Details ---");
         System.out.println("Title: " + getTitle());
         System.out.println("Date: " + getDate());
         System.out.println("Location: " + getLocation());
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
-        System.out.println("Speaker: " + speaker);
-        System.out.println("-----------------------");
+        System.out.println("------------------------");
     }
-
-    @Override
-    public String toString() {
-        return super.toString() +
-                ", Speaker: " + speaker;
-    }
-
     @Override
     public boolean registerParticipant(Participant participant) {
         if (registeredParticipantsCount < getCapacity()) {

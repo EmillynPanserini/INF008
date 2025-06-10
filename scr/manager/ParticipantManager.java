@@ -1,8 +1,8 @@
-package manager;
+package scr.manager;
 
-import participants.Participant;
-import scr.AcademicEvents;
-import ui.*;
+import scr.participants.Participant;
+import scr.events.AcademicEvents;
+import scr.ui.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -35,11 +35,11 @@ public class ParticipantManager implements Registrable {
     public void registerParticipantToEvent(List<Participant> allParticipants) {
 
         if (EventManager.getAllEvents().isEmpty()) {
-            System.out.println("No events available to register participants.");
+            System.out.println("No events available to register scr.participants.");
             return;
         }
         if (allParticipants.isEmpty()) {
-            System.out.println("No participants available to register.");
+            System.out.println("No scr.participants available to register.");
             return;
         }
 

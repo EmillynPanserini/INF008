@@ -1,6 +1,6 @@
-package scr;
+package scr.events;
 
-import manager.ValidInformation;
+import scr.manager.ValidInformation;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
