@@ -2,9 +2,6 @@
 package manager;
 
 import scr.*;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class EventManager {

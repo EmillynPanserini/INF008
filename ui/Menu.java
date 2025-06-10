@@ -109,7 +109,7 @@ public class Menu {
         System.out.println("1. Student");
         System.out.println("2. Professor");
         System.out.println("3. External");
-        type = ValidInformation.readIntInput("Enter participant type (1-3)");
+        type = ValidInformation.readIntInput("Enter participant type (1-3): ");
 
         String name = ValidInformation.readStringInput("Enter name: ");
         String email = ValidInformation.readStringInput("Enter email: ");
@@ -118,8 +118,10 @@ public class Menu {
 
         switch (type) {
             case 1:
+                Student newStudent = new Student();
                 String studentRegister = ValidInformation.readStringInput("Enter student register: ");
                 newParticipant = new Student();
+                newStudent.setRegistration(studentRegister);
                 break;
             case 2:
                 newParticipant = new Professor();
@@ -133,6 +135,8 @@ public class Menu {
         }
 
         if (newParticipant != null) {
+            newParticipant.setName(name);
+            newParticipant.setEmail(email);
             participantManager.addParticipant(newParticipant);
         }
 

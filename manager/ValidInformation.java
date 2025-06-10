@@ -10,10 +10,13 @@ public class ValidInformation {
         while (true) {
             System.out.print(choice);
             try {
-                return sc.nextInt();
+                int input = sc.nextInt();
+                sc.nextLine();
+                return input;
+
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number.");
-                sc.next();
+                sc.nextLine();
             }
         }
     }
