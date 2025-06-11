@@ -1,4 +1,3 @@
-// scr.manager/EventManager.java
 package scr.manager;
 
 import scr.events.AcademicEvents;

@@ -12,10 +12,6 @@ public class ShortCourse extends AcademicEvents implements Registrable {
     public ShortCourse(String title, LocalDate date, String location, int capacity, String description) {
         super(title, date, location, capacity, description);
     }
-
-    public String getInstructor() {
-        return instructor;
-    }
     public void setInstructor(String instructor) {
         this.instructor = instructor;
     }

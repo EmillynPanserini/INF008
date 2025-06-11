@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class ParticipantManager implements Registrable {
     private List<Participant> participants;
     private Scanner sc;
-    private int registeredParticipantsCount = 0;
 
     public ParticipantManager(){
         this.participants = new ArrayList<>();

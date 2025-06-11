@@ -2,7 +2,6 @@ package scr.events;
 
 import scr.participants.Participant;
 import scr.ui.Registrable;
-
 import java.time.LocalDate;
 
 public class Workshop extends AcademicEvents implements Registrable {

@@ -2,7 +2,6 @@ package scr.events;
 
 import scr.participants.Participant;
 import scr.ui.Registrable;
-
 import java.time.LocalDate;
 
 public class Lecture extends AcademicEvents implements Registrable {
@@ -11,11 +10,6 @@ public class Lecture extends AcademicEvents implements Registrable {
 
     public Lecture(String title, LocalDate date, String location, int capacity, String description) {
         super(title, date, location, capacity, description);
-    }
-
-
-    public String getSpeaker() {
-        return speaker;
     }
 
     public void setSpeaker(String speaker) {
