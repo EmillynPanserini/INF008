@@ -24,7 +24,7 @@ public class Menu {
                     addEvent();
                     break;
                 case 2:
-                    System.out.println("Reporting events is not yet implemented.");
+                    // implementar report event
                     break;
                 case 3:
                     addParticipant();
@@ -53,7 +53,9 @@ public class Menu {
                 """;
         System.out.println(menu);
     }
-    void eventType() {
+
+
+    void eventTypeMenu() {
         final String eventType = """
                 --- Select Event Type: ---
                 1. Academic Fair
@@ -67,33 +69,60 @@ public class Menu {
 
     void addEvent() {
         System.out.println("\n--- Add New Event ---");
-        eventType();
+        eventTypeMenu();
         int type = ValidInformation.readIntInput("Enter event type (1-4): ");
+
         AcademicEvents newEvent = null;
 
-        EventCommonDetails commonDetails = EventInputReader.collectCommonEventDetails();
-        String title = commonDetails.title();
-        LocalDate date = commonDetails.date();
-        String location = commonDetails.location();
-        int capacity = commonDetails.capacity();
-        String description = commonDetails.description();
+        String title = ValidInformation.readStringInput("Enter Title: ");
+        LocalDate date = null;
+        while (date == null) {
+            try {
+                date = LocalDate.parse(ValidInformation.readStringInput("Enter Date (YYYY-MM-DD): "));
+            } catch (java.time.format.DateTimeParseException e) {
+                System.out.println("Invalid date format. Insert again");
+            }
+        }
+        String description = ValidInformation.readStringInput("Enter Description: ");
+        int capacity = -1;
+        while (capacity <= 0) {
+            capacity = ValidInformation.readIntInput("Enter Capacity: ");
+            if (capacity <= 0) {
+                System.out.println("Capacity must be a positive number. Insert again");
+            }
+        }
+
+
+        boolean isOnline = ValidInformation.readStringInput("Is this an online event? (yes/no): ").equalsIgnoreCase("yes");
+        String location;
+        String platformUrl = null;
+
+        if (isOnline) {
+            platformUrl = ValidInformation.readStringInput("Enter Platform URL: ");
+            location = "Online Platform ";
+        } else {
+            location = ValidInformation.readStringInput("Enter Location: ");
+        }
+
 
         switch (type) {
             case 1:
-                newEvent = new AcademicFair(title, date, location, capacity, description);
+                newEvent = new AcademicFair(title, date, location, capacity, description, isOnline, platformUrl);
                 break;
             case 2:
                 String speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
-                newEvent = new Lecture(title, date, location, capacity, description);
-                ((Lecture) newEvent).setSpeaker(speaker);
+                Lecture lecture = new Lecture(title, date, location, capacity, description, isOnline, platformUrl);
+                lecture.setSpeaker(speaker);
+                newEvent = lecture;
                 break;
             case 3:
                 String instructorName = ValidInformation.readStringInput("Enter short course instructor: ");
-                newEvent = new ShortCourse(title, date, location, capacity, description);
-                ((ShortCourse) newEvent).setInstructor(instructorName);
+                ShortCourse shortCourse = new ShortCourse(title, date, location, capacity, description, isOnline, platformUrl);
+                shortCourse.setInstructor(instructorName);
+                newEvent = shortCourse;
                 break;
             case 4:
-                newEvent = new Workshop(title, date, location, capacity, description);
+                newEvent = new Workshop(title, date, location, capacity, description, isOnline, platformUrl);
                 break;
             default:
                 System.out.println("Invalid event type. Event not added.");

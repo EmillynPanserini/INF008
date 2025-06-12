@@ -8,8 +8,8 @@ public class Lecture extends AcademicEvents implements Registrable {
     private String speaker;
     private int registeredParticipantsCount = 0;
 
-    public Lecture(String title, LocalDate date, String location, int capacity, String description) {
-        super(title, date, location, capacity, description);
+    public Lecture(String title, LocalDate date, String location, int capacity, String description, boolean isOnline, String platformUrl) {
+        super(title, date, location, capacity, description, isOnline, platformUrl);
     }
 
     public void setSpeaker(String speaker) {
@@ -22,6 +22,9 @@ public class Lecture extends AcademicEvents implements Registrable {
         System.out.println("Title: " + getTitle());
         System.out.println("Date: " + getDate());
         System.out.println("Location: " + getLocation());
+        if (isOnline()) {
+            System.out.println("Platform URL: " + getPlatformUrl());
+        }
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
         System.out.println("Speaker: " + speaker);

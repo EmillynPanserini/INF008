@@ -9,8 +9,8 @@ public class ShortCourse extends AcademicEvents implements Registrable {
     private String instructor;
     private int registeredParticipantsCount = 0;
 
-    public ShortCourse(String title, LocalDate date, String location, int capacity, String description) {
-        super(title, date, location, capacity, description);
+    public ShortCourse(String title, LocalDate date, String location, int capacity, String description,  boolean isOnline, String platformUrl) {
+        super(title, date, location, capacity, description, isOnline, platformUrl);
     }
     public void setInstructor(String instructor) {
         this.instructor = instructor;
@@ -21,6 +21,9 @@ public class ShortCourse extends AcademicEvents implements Registrable {
         System.out.println("Title: " + getTitle());
         System.out.println("Date: " + getDate());
         System.out.println("Location: " + getLocation());
+        if (isOnline()) {
+            System.out.println("Platform URL: " + getPlatformUrl());
+        }
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
         System.out.println("Instructor: " + instructor);
