@@ -1,8 +1,7 @@
 package scr.events;
 
-import scr.participants.Participant;
+import scr.participants.*;
 import scr.ui.Registrable;
-
 import java.time.LocalDate;
 
 public class ShortCourse extends AcademicEvents implements Registrable {
@@ -40,12 +39,17 @@ public class ShortCourse extends AcademicEvents implements Registrable {
 
     @Override
     public boolean registerParticipant(Participant participant) {
-        if (registeredParticipantsCount < getCapacity()) {
+        if (!(participant instanceof Student)) {
+            System.out.println("Only students can do Short Courses.");
+            return false;
+        }
+
+        if (getAvailableSlots() > 0) {
             registeredParticipantsCount++;
-            System.out.println("Participant " + participant.getName() + " registered: " + getTitle());
+            System.out.println("Participant " + participant.getName() + " registrared: " + getTitle());
             return true;
         } else {
-            System.out.println("Full event: " + getTitle());
+            System.out.println("The event is full: " + getTitle());
             return false;
         }
     }

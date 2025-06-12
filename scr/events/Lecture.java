@@ -42,7 +42,7 @@ public class Lecture extends AcademicEvents implements Registrable {
 
     @Override
     public boolean registerParticipant(Participant participant) {
-        if (registeredParticipantsCount < getCapacity()) {
+        if (getAvailableSlots() > 0) {
             registeredParticipantsCount++;
             System.out.println("Participant " + participant.getName() + " registered: " + getTitle());
             return true;
