@@ -27,6 +27,7 @@ public class Lecture extends AcademicEvents implements Registrable {
         }
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
+        System.out.println("Available Slots: " + getAvailableSlots());
         System.out.println("Speaker: " + speaker);
         System.out.println("-----------------------");
     }
@@ -34,7 +35,9 @@ public class Lecture extends AcademicEvents implements Registrable {
     @Override
     public String toString() {
         return super.toString() +
-                ", Speaker: " + speaker;
+                ", Speaker: " + speaker +
+                ", Available Slot: " + getAvailableSlots() +
+                " / Capacity: " + getTotalCapacity();
     }
 
     @Override

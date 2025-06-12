@@ -26,13 +26,16 @@ public class ShortCourse extends AcademicEvents implements Registrable {
         }
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
+        System.out.println("Available Slots: " + getAvailableSlots());
         System.out.println("Instructor: " + instructor);
         System.out.println("----------------------------");
     }
     @Override
     public String toString() {
         return super.toString() +
-                ", Instructor: " + instructor;
+                ", Instructor: " + instructor +
+                ", Available Slots: " + getAvailableSlots() +
+                " / Capacity: " + getTotalCapacity();
     }
 
     @Override

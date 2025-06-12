@@ -3,7 +3,6 @@ package scr.manager;
 import scr.participants.Participant;
 import scr.events.AcademicEvents;
 import scr.ui.*;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -53,6 +52,11 @@ public class ParticipantManager implements Registrable {
                 AcademicEvents selectedEvent = EventManager.getAllEvents().get(eventIndex - 1);
 
                 if (selectedEvent instanceof Registrable registrableEvent) {
+
+                    if (registrableEvent.getAvailableSlots() <= 0) { // Usando getAvailableSlots()
+                        System.out.println("Sorry, the event '" + selectedEvent.getTitle() + "' is full.");
+                        return;
+                    }
 
                     System.out.println("\n--- Available Participants ---");
                     for (int x = 0; x < allParticipants.size(); x++) {

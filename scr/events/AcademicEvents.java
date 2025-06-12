@@ -9,9 +9,9 @@ public abstract class AcademicEvents {
     private final int capacity;
     private final String description;
     private final boolean isOnline;
-    private String platformUrl;
+    private final String platformUrl;
 
-    public AcademicEvents(String title, LocalDate date, String location, int capacity, String description, boolean isOnline,  String platformUrl) {
+    public AcademicEvents(String title, LocalDate date, String location, int capacity, String description, boolean isOnline, String platformUrl) {
         if (title == null || title.isBlank()) throw new IllegalArgumentException("Title is required.");
         if (date == null) throw new IllegalArgumentException("Date is required.");
         if (location == null || location.isBlank()) throw new IllegalArgumentException("Location is required.");
@@ -25,7 +25,7 @@ public abstract class AcademicEvents {
         this.capacity = capacity;
         this.description = description;
         this.isOnline = isOnline;
-
+        this.platformUrl = platformUrl;
     }
 
     public String getTitle() {

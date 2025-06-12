@@ -22,6 +22,7 @@ public class Workshop extends AcademicEvents implements Registrable {
         }
         System.out.println("Description: " + getDescription());
         System.out.println("Capacity: " + getCapacity());
+        System.out.println("Available Slots: " + getAvailableSlots());
         System.out.println("------------------------");
     }
     @Override

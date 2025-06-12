@@ -27,7 +27,7 @@ public class AcademicFair extends AcademicEvents implements Registrable {
 
     @Override
     public boolean registerParticipant(Participant participant) {
-        if (registeredParticipantsCount < getCapacity()) {
+        if (getAvailableSlots() > 0) {
             registeredParticipantsCount++;
             System.out.println("Participant " + participant.getName() + " registered: " + getTitle());
             return true;
@@ -46,4 +46,13 @@ public class AcademicFair extends AcademicEvents implements Registrable {
     public int getTotalCapacity() {
         return getCapacity();
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Available Slot: " + getAvailableSlots() +
+                " / Capacity: " + getTotalCapacity();
+    }
 }
+
+
