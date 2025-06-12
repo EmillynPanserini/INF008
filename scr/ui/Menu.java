@@ -3,14 +3,19 @@ package scr.ui;
 import scr.events.*;
 import scr.manager.*;
 import scr.participants.*;
+import scr.util.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.List;
 
 public class Menu {
     private EventManager eventManager;
     private ParticipantManager participantManager;
+    private CertificateGenerator certificateGenerator;
     public Menu() {
         this.eventManager = new EventManager();
         this.participantManager = new ParticipantManager();
+        this.certificateGenerator = new CertificateGenerator();
     }
 
     void run() {
@@ -24,13 +29,20 @@ public class Menu {
                     addEvent();
                     break;
                 case 2:
-                    // implementar report event
+                    generateEventReport();
                     break;
                 case 3:
                     addParticipant();
                     break;
                 case 4:
+                    if (EventManager.getAllEvents().isEmpty()) {
+                        System.out.println("Register a event first.");
+                        break;
+                    }
                     participantManager.registerParticipantToEvent(participantManager.getParticipants());
+                    break;
+                case 5:
+                    generateCertificateOption();
                     break;
                 case 0:
                     System.out.println("Exiting...");
@@ -45,9 +57,10 @@ public class Menu {
         final String menu = """
                 --- Academic Events Manager ---
                 1. Add New Event
-                2. Report Event
+                2. Report Events (by Type/Date)
                 3. Add participant
                 4. Register Participant to Event
+                5. Generate Certificate 
                 0. Exit
                 -----------------------------
                 """;
@@ -171,5 +184,62 @@ public class Menu {
         newParticipant.setEmail(email);
         participantManager.addParticipant(newParticipant);
 
+    }
+    private void generateEventReport() {
+        System.out.println("\n--- Generate Event Report ---");
+
+        String filterType = ValidInformation.readStringInput("Enter event type to filter (e.g., 'Fair', 'Lecture', 'ShortCourse', 'Workshop') or leave empty for any type: ");
+
+        LocalDate filterDate = null;
+        String dateInput = ValidInformation.readStringInput("Enter date to filter (YYYY-MM-DD) or leave empty for any date: ");
+        if (!dateInput.isEmpty()) {
+            try {
+                filterDate = LocalDate.parse(dateInput);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Filtering by date will be skipped.");
+            }
+        }
+
+        EventManager.reportEvent(filterType, filterDate);
+    }
+    private void generateCertificateOption() {
+        System.out.println("\n--- Generate Certificate ---");
+
+        if (EventManager.getAllEvents().isEmpty()) {
+            System.out.println("No events registered to generate a certificate from.");
+            return;
+        }
+        if (participantManager.getParticipants().isEmpty()) {
+            System.out.println("No participants registered to generate a certificate for.");
+            return;
+        }
+        EventManager.listAllEvents();
+        int eventChoice = ValidInformation.readIntInput("Enter the number of the event for the certificate: ");
+        AcademicEvents selectedEvent = null;
+        if (eventChoice > 0 && eventChoice <= EventManager.getAllEvents().size()) {
+            selectedEvent = EventManager.getAllEvents().get(eventChoice - 1);
+        } else {
+            System.out.println("Invalid event number.");
+            return;
+        }
+        List<Participant> allParticipants = participantManager.getParticipants();
+        System.out.println("\n--- Available Participants ---");
+        for (int i = 0; i < allParticipants.size(); i++) {
+            System.out.println((i + 1) + ". " + allParticipants.get(i).getName());
+        }
+        int participantChoice = ValidInformation.readIntInput("Enter the number of the participant for the certificate: ");
+        Participant selectedParticipant = null;
+        if (participantChoice > 0 && participantChoice <= allParticipants.size()) {
+            selectedParticipant = allParticipants.get(participantChoice - 1);
+        } else {
+            System.out.println("Invalid participant number.");
+            return;
+        }
+
+        if (selectedEvent != null && selectedParticipant != null) {
+            certificateGenerator.generateCertificate(selectedEvent, selectedParticipant);
+        } else {
+            System.out.println("Could not generate certificate due to invalid selection.");
+        }
     }
 }
