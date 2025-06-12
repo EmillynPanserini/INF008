@@ -9,9 +9,9 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class Menu {
-    private EventManager eventManager;
-    private ParticipantManager participantManager;
-    private CertificateGenerator certificateGenerator;
+    private final EventManager eventManager;
+    private final ParticipantManager participantManager;
+    private final CertificateGenerator certificateGenerator;
     public Menu() {
         this.eventManager = new EventManager();
         this.participantManager = new ParticipantManager();
@@ -60,7 +60,7 @@ public class Menu {
                 2. Report Events (by Type/Date)
                 3. Add participant
                 4. Register Participant to Event
-                5. Generate Certificate 
+                5. Generate Certificate
                 0. Exit
                 -----------------------------
                 """;
@@ -87,55 +87,68 @@ public class Menu {
 
         AcademicEvents newEvent = null;
 
-        String title = ValidInformation.readStringInput("Enter Title: ");
-        LocalDate date = null;
-        while (date == null) {
-            try {
-                date = LocalDate.parse(ValidInformation.readStringInput("Enter Date (YYYY-MM-DD): "));
-            } catch (java.time.format.DateTimeParseException e) {
-                System.out.println("Invalid date format. Insert again");
-            }
-        }
-        String description = ValidInformation.readStringInput("Enter Description: ");
-        int capacity = -1;
-        while (capacity <= 0) {
-            capacity = ValidInformation.readIntInput("Enter Capacity: ");
-            if (capacity <= 0) {
-                System.out.println("Capacity must be a positive number. Insert again");
-            }
-        }
-
+        EventCommonDetails commonDetails = EventInputReader.collectCommonEventDetails();
 
         boolean isOnline = ValidInformation.readStringInput("Is this an online event? (yes/no): ").equalsIgnoreCase("yes");
-        String location;
         String platformUrl = null;
 
+        String finalLocation = commonDetails.location(); //
         if (isOnline) {
             platformUrl = ValidInformation.readStringInput("Enter Platform URL: ");
-            location = "Online Platform ";
-        } else {
-            location = ValidInformation.readStringInput("Enter Location: ");
+            finalLocation = "Online Platform ";
         }
 
 
         switch (type) {
             case 1:
-                newEvent = new AcademicFair(title, date, location, capacity, description, isOnline, platformUrl);
+                newEvent = new AcademicFair(
+                        commonDetails.title(), //
+                        commonDetails.date(), //
+                        finalLocation,
+                        commonDetails.capacity(), //
+                        commonDetails.description(), //
+                        isOnline,
+                        platformUrl
+                );
                 break;
             case 2:
                 String speaker = ValidInformation.readStringInput("Enter lecture speaker: ");
-                Lecture lecture = new Lecture(title, date, location, capacity, description, isOnline, platformUrl);
+                Lecture lecture = new Lecture(
+                        commonDetails.title(), //
+                        commonDetails.date(), //
+                        finalLocation,
+                        commonDetails.capacity(), //
+                        commonDetails.description(), //
+                        isOnline,
+                        platformUrl
+                );
                 lecture.setSpeaker(speaker);
                 newEvent = lecture;
                 break;
             case 3:
                 String instructorName = ValidInformation.readStringInput("Enter short course instructor: ");
-                ShortCourse shortCourse = new ShortCourse(title, date, location, capacity, description, isOnline, platformUrl);
+                ShortCourse shortCourse = new ShortCourse(
+                        commonDetails.title(), //
+                        commonDetails.date(), //
+                        finalLocation,
+                        commonDetails.capacity(), //
+                        commonDetails.description(), //
+                        isOnline,
+                        platformUrl
+                );
                 shortCourse.setInstructor(instructorName);
                 newEvent = shortCourse;
                 break;
             case 4:
-                newEvent = new Workshop(title, date, location, capacity, description, isOnline, platformUrl);
+                newEvent = new Workshop(
+                        commonDetails.title(), //
+                        commonDetails.date(), //
+                        finalLocation,
+                        commonDetails.capacity(), //
+                        commonDetails.description(), //
+                        isOnline,
+                        platformUrl
+                );
                 break;
             default:
                 System.out.println("Invalid event type. Event not added.");
