@@ -1,8 +1,7 @@
 package br.edu.ifba.inf008.shell;
 
 import br.edu.ifba.inf008.interfaces.*;
-import javafx.application.Application;
-import javafx.application.Platform;
+import br.edu.ifba.inf008.interfaces.IDatabaseService;
 
 public class Core extends ICore
 {
@@ -30,6 +29,11 @@ public class Core extends ICore
     }
     public IPluginController getPluginController() {
         return pluginController;
+    }
+
+    @Override
+    public IDatabaseService getDatabaseService() {
+        return null;
     }
 
     private IAuthenticationController authenticationController = new AuthenticationController();

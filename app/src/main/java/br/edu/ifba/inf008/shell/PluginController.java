@@ -45,4 +45,9 @@ public class PluginController implements IPluginController
             return false;
         }
     }
+
+    @Override
+    public IPlugin getPlugin(String id) {
+        return null;
+    }
 }

@@ -46,6 +46,7 @@ public class UIController extends Application implements IUIController
 
         tabPane = new TabPane();
         tabPane.setSide(Side.BOTTOM);
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
 
         vBox.getChildren().addAll(tabPane);
 

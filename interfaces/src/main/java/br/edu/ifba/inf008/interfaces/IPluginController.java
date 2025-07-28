@@ -5,4 +5,6 @@ import br.edu.ifba.inf008.interfaces.ICore;
 public interface IPluginController
 {
     public abstract boolean init();
+    IPlugin getPlugin(String id);
+
 }
