@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<?import javafx.geometry.Insets?>
+<VBox fx:controller="br.edu.ifba.inf008.plugins.controller.UserViewController"
+      xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+
+    <Label text="User Management" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Separator />
+
+    <GridPane hgap="10" vgap="10" alignment="CENTER_LEFT">
+        <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="textName" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="textEmail" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label fx:id="labelMessage" textFill="red" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2" />
+
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2">
+            <Button fx:id="buttonSave" text="Save" onAction="#handleSave" />
+            <Button fx:id="buttonCancel" text="Cancel" onAction="#handleCancel" visible="false" />
+        </HBox>
+    </GridPane>
+
+    <Separator />
+
+    <TableView fx:id="userTable" VBox.vgrow="ALWAYS" prefHeight="300">
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="buttonEdit" text="Edit" onAction="#handleEdit" />
+        <Button fx:id="buttonDelete" text="Delete" onAction="#handleDelete" />
+        <Button fx:id="buttonRefresh" text="Refresh" onAction="#handleRefresh" />
+    </HBox>
+
+    <stylesheets>
+        <URL value="@/css/style.css" /> </stylesheets>
+</VBox>

@@ -12,11 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.time.LocalDate;
 
 import java.util.List;
+import javafx.fxml.FXMLLoader; // Importação adicionada para FXMLLoader
+import java.io.IOException;   // Importação adicionada para IOException
 
 public class UserViewController {
     private UserService userService;
     private String editingUserId = null; // Para armazenar o ID do usuário em edição
-    private Node rootView;
+    private Node rootView; // Este campo será inicializado ao carregar o FXML
 
     @FXML private TableView<User> userTable;
     @FXML private TextField textName;
@@ -30,8 +32,25 @@ public class UserViewController {
 
     public UserViewController(IDatabaseService databaseService) {
         this.userService = new UserService(databaseService);
-        // Não chame initializeUI() ou loadUserData() no construtor se usar FXML
-        // O método initialize() com @FXML será chamado automaticamente
+        try {
+            // Cria um FXMLLoader e especifica o caminho para o seu arquivo FXML.
+            // O caminho é relativo à pasta 'resources' do seu módulo e segue a estrutura de pacotes.
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifba/inf008/plugins/controller/UserView.fxml"));
+
+            // Define esta instância (UserViewController) como o controlador do FXML.
+            // Isso permite que os elementos fx:id e onAction no FXML sejam conectados a este objeto.
+            loader.setController(this);
+
+            // Carrega o FXML e atribui o Node raiz (geralmente um VBox, AnchorPane, etc.)
+            // que está definido no FXML para a variável rootView.
+            this.rootView = loader.load();
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar FXML para UserViewController: " + e.getMessage());
+            e.printStackTrace();
+            // Aqui você pode adicionar lógica para lidar com o erro de carregamento do FXML,
+            // como exibir uma mensagem de erro na console ou na própria UI, ou carregar
+            // uma interface de fallback.
+        }
     }
 
     @FXML
@@ -49,12 +68,15 @@ public class UserViewController {
         TableColumn<User, LocalDate> regDateColumn = new TableColumn<>("Registration Date");
         regDateColumn.setCellValueFactory(new PropertyValueFactory<>("registrationDate"));
 
-        if (userTable.getColumns().isEmpty()) {
+        // Adiciona as colunas à TableView apenas se ela ainda não as tiver (evita duplicação)
+        if (userTable != null && userTable.getColumns().isEmpty()) { // Adicionada verificação de nulidade para userTable
             userTable.getColumns().addAll(idColumn, nameColumn, emailColumn, regDateColumn);
         }
 
-        loadUserData(); // Carrega os dados iniciais
-        resetForm(); // Reseta o formulário
+        // loadUserData() e resetForm() agora serão chamados após o FXML ser carregado
+        // e os elementos @FXML injetados.
+        loadUserData();
+        resetForm();
     }
 
     @FXML
@@ -148,17 +170,20 @@ public class UserViewController {
     private void loadUserData() {
         List<User> users = userService.getAllUsers();
         ObservableList<User> data = FXCollections.observableArrayList(users);
-        userTable.setItems(data);
+        if (userTable != null) { // Adicionada verificação de nulidade
+            userTable.setItems(data);
+        }
     }
 
     private void resetForm() {
-        textName.clear();
-        textEmail.clear();
+        if (textName != null) textName.clear(); // Adicionada verificação de nulidade
+        if (textEmail != null) textEmail.clear(); // Adicionada verificação de nulidade
         editingUserId = null;
-        buttonSave.setText("Save");
-        buttonCancel.setVisible(false);
-        labelMessage.setText(""); // Clear message
+        if (buttonSave != null) buttonSave.setText("Save"); // Adicionada verificação de nulidade
+        if (buttonCancel != null) buttonCancel.setVisible(false); // Adicionada verificação de nulidade
+        if (labelMessage != null) labelMessage.setText(""); // Clear message (Adicionada verificação de nulidade)
     }
+
     public Node getView() {
         return rootView;
     }

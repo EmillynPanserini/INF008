@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="executable" />
         <module name="interfaces" />
+        <module name="bookplugin" />
+        <module name="userplugin" />
+        <module name="executable" />
         <module name="myplugin" />
       </profile>
     </annotationProcessing>

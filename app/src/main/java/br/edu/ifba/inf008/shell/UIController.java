@@ -38,7 +38,7 @@ public class UIController extends Application implements IUIController
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Library System");
 
         menuBar = new MenuBar();
 

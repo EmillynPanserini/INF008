@@ -16,12 +16,12 @@ public class UserPlugin implements IPlugin, IRequiresDatabaseService {
 
     @Override
     public String getId() {
-        return "user-management";
+        return "user-plugin";
     }
 
     @Override
     public String getCapabilities() {
-        return "User Management (CRUD, Listing)";
+        return "User Plugin (CRUD, Listing)";
     }
 
     @Override
@@ -42,13 +42,12 @@ public class UserPlugin implements IPlugin, IRequiresDatabaseService {
         menuItem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                // Instanciar o controlador da UI do usuário, passando o databaseService
                 UserViewController userView = new UserViewController(databaseService);
                 uiController.createTab("User Management", userView.getView());
             }
         });
 
-        System.out.println("User Management Plugin initialized successfully.");
+        System.out.println("User Plugin initialized successfully.");
         return true;
     }
 }
