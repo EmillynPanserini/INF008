@@ -14,15 +14,7 @@ public class UserPlugin implements IPlugin, IRequiresDatabaseService {
 
     private IDatabaseService databaseService;
 
-    @Override
-    public String getId() {
-        return "user-plugin";
-    }
 
-    @Override
-    public String getCapabilities() {
-        return "User Plugin (CRUD, Listing)";
-    }
 
     @Override
     public void setDatabaseService(IDatabaseService databaseService) {
@@ -38,16 +30,7 @@ public class UserPlugin implements IPlugin, IRequiresDatabaseService {
 
         IUIController uiController = ICore.getInstance().getUIController();
 
-        MenuItem menuItem = uiController.createMenuItem("Manage", "Users"); // Menu "Manage" -> "Users"
-        menuItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                UserViewController userView = new UserViewController(databaseService);
-                uiController.createTab("User Management", userView.getView());
-            }
-        });
 
-        System.out.println("User Plugin initialized successfully.");
-        return true;
+        return false;
     }
 }

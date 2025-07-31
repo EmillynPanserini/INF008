@@ -16,13 +16,5 @@ public class BookPlugin implements IPlugin
        return true;
     }
 
-    @Override
-    public String getId() {
-        return "";
-    }
 
-    @Override
-    public String getCapabilities() {
-        return "";
-    }
 }

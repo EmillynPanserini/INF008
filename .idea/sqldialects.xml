@@ -2,6 +2,5 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/docker-T2" dialect="MariaDB" />
-    <file url="file://$PROJECT_DIR$/plugins/userplugin/src/main/java/br.edu.ifba.inf008.plugins/dao/UserDAO.java" dialect="GenericSQL" />
   </component>
 </project>

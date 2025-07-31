@@ -1,90 +1,71 @@
 package br.edu.ifba.inf008.shell;
 
 import br.edu.ifba.inf008.interfaces.IUIController;
-import br.edu.ifba.inf008.interfaces.ICore;
-import br.edu.ifba.inf008.shell.PluginController;
-
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.application.Platform;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
-import javafx.geometry.Side;
-import javafx.scene.Node;
 
-public class UIController extends Application implements IUIController
-{
-    private ICore core;
-    private MenuBar menuBar;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UIController extends Application implements IUIController {
+    private static UIController instance;
+    private Stage primaryStage;
     private TabPane tabPane;
-    private static UIController uiController;
+    private Map<String, Tab> openTabs = new HashMap<>();
 
     public UIController() {
-    }
-
-    @Override
-    public void init() {
-        uiController = this;
+        instance = this;
     }
 
     public static UIController getInstance() {
-        return uiController;
+        return instance;
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Library System");
+    public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Library System");
 
-        menuBar = new MenuBar();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/ifba/inf008/LoginView.fxml"));
+            Parent loginRoot = loader.load();
 
-        VBox vBox = new VBox(menuBar);
+            LoginController loginController = loader.getController();
+            // if (loginController != null) { loginController.setUiController(this); }
 
-        tabPane = new TabPane();
-        tabPane.setSide(Side.BOTTOM);
-        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
+            Scene scene = new Scene(loginRoot, 600, 400);
+            primaryStage.setScene(scene);
+            primaryStage.show();
 
-        vBox.getChildren().addAll(tabPane);
-
-        Scene scene = new Scene(vBox, 960, 600);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
-        Core.getInstance().getPluginController().init();
-    }
-
-    public MenuItem createMenuItem(String menuText, String menuItemText) {
-        // Criar o menu caso ele nao exista
-        Menu newMenu = null;
-        for (Menu menu : menuBar.getMenus()) {
-            if (menu.getText() == menuText) {
-                newMenu = menu;
-                break;
-            }
-        }
-        if (newMenu == null) {
-            newMenu = new Menu(menuText);
-            menuBar.getMenus().add(newMenu);
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar LoginView.fxml: " + e.getMessage());
+            e.printStackTrace();
+            // Fallback: Exibir uma tela de erro simples se o login FXML falhar
+            primaryStage.setScene(new Scene(new Label("Erro ao carregar tela de login.")));
+            primaryStage.show();
         }
 
-        // Criar o menu item neste menu
-        MenuItem menuItem = new MenuItem(menuItemText);
-        newMenu.getItems().add(menuItem);
-
-        return menuItem;
+        // deve ocorrer APENAS após o login bem-sucedido.
+        // Para isso, LoginController precisaria chamar um metodo em UIController.
+        // Exemplo de metodo que UIController chamaria para exibir a app principal:
+        // showMainApplication();
     }
 
-    public boolean createTab(String tabText, Node contents) {
-        Tab tab = new Tab();
-        tab.setText(tabText);
-        tab.setContent(contents);
-        tabPane.getTabs().add(tab);
+    /**
+     * Metodo para ser chamado após o login bem-sucedido para exibir a aplicação principal.
+     */
+    public void showMainApplication() {
 
-        return true;
+
+
+
     }
+
+
+
 }

@@ -1,2 +1,3 @@
-br\edu\ifba\inf008\plugins\MyPlugin$1.class
-br\edu\ifba\inf008\plugins\MyPlugin.class
+br\edu\ifba\inf008\plugins\controller\LoginController.class
+br\edu\ifba\inf008\plugins\StartPage$1.class
+br\edu\ifba\inf008\plugins\StartPage.class
