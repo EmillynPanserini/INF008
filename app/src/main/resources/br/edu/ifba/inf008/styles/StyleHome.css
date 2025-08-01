@@ -1,6 +1,14 @@
 .bg_home {
     -fx-background-color: linear-gradient(to right, #111826, #40818C);
 }
+.container_style{
+    -fx-background-color: rgba(143, 182, 191, 0.3);
+    -fx-background-radius: 10;
+}
+.shadow{
+    -fx-effect: dropShadow(gaussian, #111826, 20, 0, 5, 10);
+}
+/*** APP BAR ***/
 .menu_app_bar{
     -fx-background-color: trasparent;
 }
@@ -9,10 +17,11 @@
     -fx-background-color: #4D818C;
     -fx-background-radius: 10;
 }
-
+.menu_app_bar .menu .menu-item:focused,
 .menu_app_bar .menu .menu-item:hover{
     -fx-background-color: #4D818C;
 }
+/*** SIDE BAR ***/
 .home_app_bar{
     -fx-effect: dropShadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);
 }
@@ -36,8 +45,5 @@
     -fx-background-color: rgba(143, 182, 191, 0.4);
     -fx-background-radius: 0 0 10 10;
 }
-.container_style{
-    -fx-background-color: rgba(143, 182, 191, 0.3);
-    -fx-background-radius: 10;
-}
+
 
