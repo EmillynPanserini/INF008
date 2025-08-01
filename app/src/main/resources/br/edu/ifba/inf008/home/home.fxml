@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane prefHeight="500.0" prefWidth="800.0" styleClass="bg_home" stylesheets="@../styles/StyleHome.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.inf008.shell.HomeController">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #111826;" styleClass="home_app_bar" BorderPane.alignment="CENTER">
+         <children>
+            <FontIcon iconColor="WHITE" iconLiteral="mdi2b-book-open-page-variant-outline" iconSize="25">
+               <HBox.margin>
+                  <Insets left="20.0" right="10.0" />
+               </HBox.margin>
+            </FontIcon>
+            <Label text="LIBRARY" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+            <MenuBar styleClass="menu_app_bar">
+              <menus>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#handleMenuProfile" text="Menu Item" />
+                  </items>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="mdi2b-bell" iconSize="25" onMouseClicked="#handleMenu" styleClass="menu_app_bar" />
+                     </graphic>
+                </Menu>
+                <Menu mnemonicParsing="false">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="User" />
+                  </items>
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="mdi2a-account" iconSize="26" styleClass="menu_app_bar" />
+                     </graphic>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="150.0" styleClass="container_style" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#handleMenuHome" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2h-home" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-first" />
+                  <String fx:value="home_menu_item-first_border" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#handleMenuUsers" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2a-account-multiple" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Users" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-first_border" />
+                  <String fx:value="home_menu_item" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="50.0" onMouseClicked="#handleMenuBooks" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2b-bookshelf" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Books" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-first_border" />
+                  <String fx:value="home_menu_item" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="90.0" onMouseClicked="#handleMenuLoan" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2h-hand-extended" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Loan" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-first_border" />
+                  <String fx:value="home_menu_item" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="130.0" onMouseClicked="#handleMenuLoanReports" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2f-file-document" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Loan reports" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-first_border" />
+                  <String fx:value="home_menu_item" />
+               </styleClass>
+            </HBox>
+            <Pane prefHeight="128.0" prefWidth="150.0" styleClass="home_menu_item-first_border" VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="170.0" onMouseClicked="#handleMenuExit" prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <FontIcon iconColor="WHITE" iconLiteral="mdi2e-exit-to-app" iconSize="20">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </FontIcon>
+                  <Label text="Exit" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="home_menu_item-last" />
+                  <String fx:value="home_menu_item" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>
