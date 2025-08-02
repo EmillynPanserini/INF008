@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DdlMappings">
-    <mapping uuid="a4ebad76-b556-4e51-a463-923173df141c" name="@localhost Mapping">
-      <data-sources db="d3d605da-abe8-42ca-8265-03c4f4202d1f" ddl="02c7989a-fba5-4417-a183-738c09c63945" />
-    </mapping>
-  </component>
   <component name="SqlDataSourceStorage">
     <option name="dataSources">
       <list>
         <State>
-          <option name="id" value="02c7989a-fba5-4417-a183-738c09c63945" />
-          <option name="name" value="@localhost (DDL)" />
+          <option name="id" value="0dc83b8e-662c-4266-9308-788247a7daf4" />
+          <option name="name" value="DDL data source" />
           <option name="dbmsName" value="MARIADB" />
           <option name="urls">
             <array>
-              <option value="file://$PROJECT_DIR$/docker-T2" />
+              <option value="file://$PROJECT_DIR$/docker-T2/init.sql" />
             </array>
           </option>
           <option name="outLayout" value="File per object by schema.groovy" />

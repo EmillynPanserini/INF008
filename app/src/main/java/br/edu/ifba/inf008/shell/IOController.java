@@ -1,7 +1,8 @@
 package br.edu.ifba.inf008.shell;
 
 import br.edu.ifba.inf008.interfaces.IIOController;
+import org.springframework.stereotype.Component;
 
-public class IOController implements IIOController
-{
+@Component
+public class IOController implements IIOController {
 }

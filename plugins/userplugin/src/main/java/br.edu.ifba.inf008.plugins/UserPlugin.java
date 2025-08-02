@@ -3,7 +3,7 @@ package br.edu.ifba.inf008.plugins;
 import br.edu.ifba.inf008.interfaces.*;
 
 
-import br.edu.ifba.inf008.plugins.controller.UserViewController;
+//import br.edu.ifba.inf008.plugins.controller.UserViewController;
 import javafx.scene.control.MenuItem;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +28,7 @@ public class UserPlugin implements IPlugin, IRequiresDatabaseService {
             return false;
         }
 
-        IUIController uiController = ICore.getInstance().getUIController();
+        //IUIController uiController = ICore.getInstance().getUIController();
 
 
         return false;

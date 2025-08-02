@@ -1,6 +1,15 @@
 .bg_home {
     -fx-background-color: linear-gradient(to right, #111826, #40818C);
 }
+.shadow{
+    -fx-effect: dropShadow(gaussian, #111826, 20, 0, 5, 10);
+}
+.container_style{
+    -fx-background-color: rgba(143, 182, 191, 0.3);
+    -fx-background-radius: 10;
+}
+
+/*** APP BAR ***/
 .menu_app_bar{
     -fx-background-color: trasparent;
 }
@@ -9,10 +18,11 @@
     -fx-background-color: #4D818C;
     -fx-background-radius: 10;
 }
-
+.menu_app_bar .menu .menu-item:focused,
 .menu_app_bar .menu .menu-item:hover{
     -fx-background-color: #4D818C;
 }
+/*** SIDE BAR ***/
 .home_app_bar{
     -fx-effect: dropShadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);
 }
@@ -21,7 +31,6 @@
 }
 .home_menu_item-first{
     -fx-background-color: #224F59;
-    -fx-background-radius: 10 10 0 0;
 }
 .home_menu_item-first:hover{
     -fx-background-color: #1b373e;
@@ -36,8 +45,74 @@
     -fx-background-color: rgba(143, 182, 191, 0.4);
     -fx-background-radius: 0 0 10 10;
 }
-.container_style{
-    -fx-background-color: rgba(143, 182, 191, 0.3);
-    -fx-background-radius: 10;
+/*** TABLES ***/
+
+.table-view{
+    -fx-base: #111826;
+    -fx-accent: #8FB6BF;
+    -fx-focus-color: #8FB6BF;
+}
+.table-view .cell{
+    -fx-cell-size: 25;
+    -fx-padding: 5;
+    -fx-font-size: 12;
+}
+.table-view .label{
+    -fx-font-size: 14;
+    -fx-padding: 8;
 }
 
+/***** PAGINATION *****/
+
+.pagination{
+    -fx-base: #111826;
+}
+/* space between buttons */
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 3;
+}
+
+/* size button */
+.pagination > .pagination-control > .control-box > .number-button,
+.pagination > .pagination-control > .control-box > .bullet-button,
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button {
+    -fx-background-insets: 0, 1;
+    -fx-background-color: lightgray, #8FB6BF;
+    -fx-min-width: 20;
+    -fx-min-height: 20;
+    -fx-text-fill: #111826;
+    -fx-font-size: 12;
+}
+
+/* Color hover */
+.pagination > .pagination-control > .control-box > .number-button:hover,
+.pagination > .pagination-control > .control-box > .bullet-button:hover,
+.pagination > .pagination-control > .control-box > .left-arrow-button:hover,
+.pagination > .pagination-control > .control-box > .right-arrow-button:hover {
+    -fx-background-insets: 0;
+    -fx-background-color: lightgray, #8FB6BF;
+    -fx-text-fill: #FFF;
+}
+
+/* Pagination select color*/
+.pagination > .pagination-control > .control-box > .number-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected{
+    -fx-background-insets: 0;
+    -fx-background-color: lightgray, #8FB6BF;
+    -fx-text-fill: white;
+}
+
+/* Arrow color*/
+.pagination > .pagination-control .right-arrow,
+.pagination > .pagination-control .left-arrow{
+    -fx-background-color:  #111826;
+}
+.pagination > .pagination-control .right-arrow:hover,
+.pagination > .pagination-control .left-arrow:hover{
+    -fx-background-color:  white;
+}
+.pagination > .pagination-control .right-arrow-button:hover .right-arrow,
+.pagination > .pagination-control .left-arrow-button:hover .left-arrow{
+    -fx-background-color:  white;
+}

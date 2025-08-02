@@ -1,13 +1,14 @@
 package br.edu.ifba.inf008.shell;
 
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.TextFlow;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Component; // Se você ainda não o tem, adicione este import e a anotação @Component
+import org.springframework.beans.factory.annotation.Autowired; // Se você não o tem, adicione este import
 
+@Component // Adicione @Component se ainda não o fez, para que o Spring o gerencie
 public class LoginController {
 
     @FXML
@@ -19,6 +20,14 @@ public class LoginController {
     @FXML
     private TextField textFieldPassword;
 
+    // ADICIONADO: Campo para a referência do UIController
+    private UIController uiController;
+
+    // ADICIONADO: Setter para injetar a referência do UIController
+    // @Autowired // Se LoginController fosse um bean criado pelo Spring diretamente, usaria @Autowired
+    public void setUiController(UIController uiController) {
+        this.uiController = uiController;
+    }
 
     @FXML
     public void initialize() {
@@ -30,7 +39,7 @@ public class LoginController {
     @FXML
     void handleRegister(MouseEvent event) {
         System.out.println("Register clicked!");
-        //  Chamar um metodo no UIController para mudar para uma tela de registro
+        // Exemplo: uiController.showRegistrationScreen();
     }
 
     @FXML
@@ -40,16 +49,19 @@ public class LoginController {
 
         System.out.println("Attempting login with: " + email + " / " + password);
 
-        // Exemplo de lógica de login (substitua pela sua autenticação real)
         if ("test@example.com".equals(email) && "password".equals(password)) {
             if (loginMsg != null) {
                 loginMsg.setVisible(true);
-                loginMsg.setStyle("-fx-background-color: #4CAF50; -fx-padding: 10px;"); // Verde para sucesso
+                loginMsg.setStyle("-fx-background-color: #4CAF50; -fx-padding: 10px;");
                 ((javafx.scene.text.Text) loginMsg.getChildren().get(0)).setText("Login successful!");
             }
             System.out.println("Login successful!");
-            // chamar um metodo no UIController para mudar para a tela principal
-            // Ex: UIController.getInstance().showMainApplication();
+            // ADICIONADO: Chamar o método para mostrar a aplicação principal
+            if (uiController != null) {
+                uiController.showMainApplication();
+            } else {
+                System.err.println("UIController não injetado no LoginController!");
+            }
         } else {
             if (loginMsg != null) {
                 loginMsg.setVisible(true);
