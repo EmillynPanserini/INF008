@@ -1,0 +1,49 @@
+.bg_home {
+    -fx-background-color: linear-gradient(to right, #111826, #40818C);
+}
+.container_style{
+    -fx-background-color: rgba(143, 182, 191, 0.3);
+    -fx-background-radius: 10;
+}
+.shadow{
+    -fx-effect: dropShadow(gaussian, #111826, 20, 0, 5, 10);
+}
+/*** APP BAR ***/
+.menu_app_bar{
+    -fx-background-color: trasparent;
+}
+.menu_app_bar .menu:hover,
+.menu_app_bar .menu:showing{
+    -fx-background-color: #4D818C;
+    -fx-background-radius: 10;
+}
+.menu_app_bar .menu .menu-item:focused,
+.menu_app_bar .menu .menu-item:hover{
+    -fx-background-color: #4D818C;
+}
+/*** SIDE BAR ***/
+.home_app_bar{
+    -fx-effect: dropShadow(gaussian, rgba(0,0,0,0.3), 20, 0, 0, 10);
+}
+.home_menu_item:hover{
+    -fx-background-color: rgba(22, 27, 28, 0.3);
+}
+.home_menu_item-first{
+    -fx-background-color: #224F59;
+    -fx-background-radius: 10 10 0 0;
+}
+.home_menu_item-first:hover{
+    -fx-background-color: #1b373e;
+    -fx-background-radius: 10 10 0 0;
+}
+.home_menu_item-first_border{
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: rgba(255, 255, 255, 0.3);
+}
+
+.home_menu_item-last{
+    -fx-background-color: rgba(143, 182, 191, 0.4);
+    -fx-background-radius: 0 0 10 10;
+}
+
+

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3d707f16-5a1d-4718-8bae-0424d1a1cb5e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/bookplugin/bookplugin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/src/main/java/br.edu.ifba.inf008.plugins/UserPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/src/main/resources/br.edu.ifba.inf008.plugins/dao/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/css/LoanStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/view/LoanView.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/view/UserRegstration.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/classes/br/edu/ifba/inf008/plugins/UserPlugin.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/classes/br/edu/ifba/inf008/plugins/controller/UserViewController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/classes/br/edu/ifba/inf008/plugins/dao/UserDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/classes/br/edu/ifba/inf008/plugins/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/loanplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/userplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/view/UserRegstration.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/service/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/IOController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/IOController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/PluginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/PluginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/edu/ifba/inf008/shell/UIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/app-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/app-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/dashboard/Dashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/service/DatabaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/service/DatabaseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/AuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/AuthenticationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/Core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/IOController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/IOController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/PluginController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/PluginController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/PluginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/PluginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/UIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/shell/UIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/classes/br/edu/ifba/inf008/styles/StyleDashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/app/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/src/main/java/br/edu/ifba/inf008/interfaces/ICore.java" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/src/main/java/br/edu/ifba/inf008/interfaces/ICore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/src/main/java/br/edu/ifba/inf008/interfaces/IUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/src/main/java/br/edu/ifba/inf008/interfaces/IUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/target/classes/br/edu/ifba/inf008/interfaces/ICore.class" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/target/classes/br/edu/ifba/inf008/interfaces/ICore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/target/classes/br/edu/ifba/inf008/interfaces/IUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/target/classes/br/edu/ifba/inf008/interfaces/IUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/target/interfaces-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/target/interfaces-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/BookPlugin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/BookPlugin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/StartPage.jar" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/StartPage.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/UserPlugin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/UserPlugin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/bookplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/bookplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/bookplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/bookplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/src/main/java/br.edu.ifba.inf008.plugins/UserPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/src/main/java/br.edu.ifba.inf008.plugins/UserPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/css/UserStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/css/UserStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/view/UserView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/src/main/resources/br.edu.ifba.inf008.plugins/ui/view/UserView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/target/classes/br/edu/ifba/inf008/plugins/UserPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/target/classes/br/edu/ifba/inf008/plugins/UserPlugin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/target/classes/br/edu/ifba/inf008/plugins/controller/UserViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/userplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/userplugin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "EmillynPanserini"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/EmillynPanserini/INF008.git",
+    "accountId": "6f39c459-5e4a-4b04-a3be-a7da8ef34741"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="30kHtiUiA4Jk0A2ETFFNt7exHLE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.App.executor": "Run",
+    "git-widget-placeholder": "Trabalho-2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.edu.ifba.inf008.App" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-24.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.27812.49" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.27812.49" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3d707f16-5a1d-4718-8bae-0424d1a1cb5e" name="Changes" comment="" />
+      <created>1754164871184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754164871184</updated>
+      <workItem from="1754164872820" duration="4805000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
