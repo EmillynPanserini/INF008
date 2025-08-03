@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component // UIController é um bean Spring
-public class UIController implements IUIController { // CORRIGIDO: Não estende mais Application
+public class UIController implements IUIController {
 
     @Autowired
     private ConfigurableApplicationContext springContext;
@@ -28,7 +28,7 @@ public class UIController implements IUIController { // CORRIGIDO: Não estende 
     @Lazy
     private ICore core;
 
-    private Stage primaryStage; // ADICIONADO: Campo para armazenar o Stage principal
+    private Stage primaryStage; // Campo para armazenar o Stage principal
     private TabPane tabPane;
     private Map<String, Tab> openTabs = new HashMap<>();
 
@@ -36,12 +36,12 @@ public class UIController implements IUIController { // CORRIGIDO: Não estende 
         // Construtor padrão. Spring gerencia a criação e injeção.
     }
 
-    // ADICIONADO: Setter para o Stage principal (chamado de App.start())
+    // Setter para o Stage principal (chamado de App.start())
     public void setPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
     }
 
-    // CORRIGIDO: Este é o método que será chamado para iniciar a UI (antigo start())
+    //  o metodo que será chamado para iniciar a UI (antigo start())
     public void showLoginScreen() {
         this.primaryStage.setTitle("Library System"); // Define o título da janela
 
@@ -70,7 +70,7 @@ public class UIController implements IUIController { // CORRIGIDO: Não estende 
     }
 
     /**
-     * Método para ser chamado após o login bem-sucedido para exibir a aplicação principal.
+     * Metodo para ser chamado após o login bem-sucedido para exibir a aplicação principal.
      */
     public void showMainApplication() {
         BorderPane mainLayout = new BorderPane();
