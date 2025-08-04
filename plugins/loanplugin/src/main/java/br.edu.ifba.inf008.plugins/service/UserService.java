@@ -1,8 +1,8 @@
-package br.edu.ifba.inf008.plugins.service;
+package br.edu.ifba.inf008.plugins.usacase;
 
 import br.edu.ifba.inf008.interfaces.IDatabaseService;
 import br.edu.ifba.inf008.interfaces.models.User;
-import br.edu.ifba.inf008.plugins.dao.UserDAO;
+import br.edu.ifba.inf008.plugins.infrastructure.UserDAO;
 
 import java.time.LocalDate;
 import java.util.List;

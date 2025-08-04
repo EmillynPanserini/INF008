@@ -13,7 +13,8 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="500.0" prefWidth="800.0" styleClass="bg_home" stylesheets="@../styles/StyleHome.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.inf008.shell.HomeController">
+<?import javafx.scene.layout.AnchorPane?>
+<BorderPane prefHeight="500.0" prefWidth="800.0" styleClass="bg_home" stylesheets="@../styles/StyleHome.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.inf008.infrastructure.shell.HomeController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #111826;" styleClass="home_app_bar" BorderPane.alignment="CENTER">
          <children>
@@ -176,4 +177,8 @@
          </children>
       </VBox>
    </left>
+   <center>
+      <AnchorPane fx:id="contentArea" BorderPane.alignment="CENTER">
+      </AnchorPane>
+   </center>
 </BorderPane>

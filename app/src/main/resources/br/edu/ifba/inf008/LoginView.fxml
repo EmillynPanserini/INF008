@@ -13,7 +13,7 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.inf008.shell.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifba.inf008.infrastructure.shell.LoginController">
    <children>
       <VBox prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: #1E3340;" HBox.hgrow="ALWAYS">
          <children>
@@ -46,7 +46,6 @@
                </font>
             </Label>
             <TextField fx:id="textFieldEmail" layoutX="76.0" layoutY="124.0" onAction="#handlerLoginButton" promptText="Email" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="150.0" />
-            <TextField fx:id="textFieldPassword" layoutX="60.0" layoutY="188.0" onAction="#handlerLoginButton" promptText="Password" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" />
             <Button layoutX="31.0" layoutY="236.0" mnemonicParsing="false" onAction="#handlerLoginButton" text="ENTER" textFill="#1e3340" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0" />
             <Label alignment="CENTER" layoutY="369.0" onMouseClicked="#handleRegister" text="Register here" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <cursor>

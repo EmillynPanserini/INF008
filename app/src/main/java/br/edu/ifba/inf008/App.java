@@ -1,15 +1,14 @@
 package br.edu.ifba.inf008;
 
-import br.edu.ifba.inf008.shell.UIController;
+
+import br.edu.ifba.inf008.infrastructure.shell.UIController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-/**
- * Hello !
- */
+
 @SpringBootApplication
 public class App extends Application {
 
@@ -25,6 +24,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         UIController uiController = springContext.getBean(UIController.class);
 
+        // CORRIGIDO: Chamar setPrimaryStage e showLoginScreen() no UIController
         uiController.setPrimaryStage(primaryStage);
         uiController.showLoginScreen();
     }

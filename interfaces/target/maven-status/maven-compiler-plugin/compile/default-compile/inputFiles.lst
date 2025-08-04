@@ -1,11 +1,12 @@
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\ICore.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IUIController.java
-C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\models\Loan.java
-C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\models\User.java
+C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\usecase\UseCase.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IRequiresDatabaseService.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IAuthenticationController.java
+C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\models\UserDto.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IPlugin.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IIOController.java
-C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\models\Book.java
+C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\models\LoginDto.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IDatabaseService.java
+C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\ILoginController.java
 C:\Users\MyByte 2\IdeaProjects\INF008\interfaces\src\main\java\br\edu\ifba\inf008\interfaces\IPluginController.java

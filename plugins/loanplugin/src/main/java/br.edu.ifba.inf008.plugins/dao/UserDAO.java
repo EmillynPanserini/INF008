@@ -1,4 +1,4 @@
-package br.edu.ifba.inf008.plugins.dao;
+package br.edu.ifba.inf008.plugins.infrastructure;
 
 import br.edu.ifba.inf008.interfaces.IDatabaseService;
 import br.edu.ifba.inf008.interfaces.models.User;

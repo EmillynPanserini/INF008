@@ -4,7 +4,7 @@
     <option name="dataSources">
       <list>
         <State>
-          <option name="id" value="0dc83b8e-662c-4266-9308-788247a7daf4" />
+          <option name="id" value="060b27b0-bcba-410d-aa3f-001721cd3b30" />
           <option name="name" value="DDL data source" />
           <option name="dbmsName" value="MARIADB" />
           <option name="urls">

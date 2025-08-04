@@ -1,9 +1,7 @@
 .bg_home {
     -fx-background-color: linear-gradient(to right, #111826, #40818C);
 }
-.shadow{
-    -fx-effect: dropShadow(gaussian, #111826, 20, 0, 5, 10);
-}
+
 .container_style{
     -fx-background-color: rgba(143, 182, 191, 0.3);
     -fx-background-radius: 10;
