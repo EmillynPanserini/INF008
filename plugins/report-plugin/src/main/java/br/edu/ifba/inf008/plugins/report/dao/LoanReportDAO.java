@@ -38,7 +38,6 @@ public class LoanReportDAO {
                 loans.add(loan);
             }
         }
-        
         return loans;
     }
     
@@ -73,7 +72,6 @@ public class LoanReportDAO {
                 }
             }
         }
-        
         return loans;
     }
     
@@ -108,7 +106,6 @@ public class LoanReportDAO {
                 }
             }
         }
-        
         return loans;
     }
     

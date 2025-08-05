@@ -32,7 +32,6 @@ public class LoanReportView extends VBox {
     private TableView<Loan> tableView;
     private ObservableList<Loan> loans;
     
-    // Filter controls
     private TextField userFilterField;
     private TextField bookFilterField;
     private ComboBox<String> statusFilter;
@@ -58,42 +57,39 @@ public class LoanReportView extends VBox {
     }
 
     private void initializeComponents() {
-        // Title
-        Label titleLabel = new Label("Relatório de Empréstimos");
+        Label titleLabel = new Label("Loan Report");
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
         // Filter controls
         userFilterField = new TextField();
-        userFilterField.setPromptText("Filtrar por usuário...");
+        userFilterField.setPromptText("Filter by user");
         
         bookFilterField = new TextField();
-        bookFilterField.setPromptText("Filtrar por livro...");
+        bookFilterField.setPromptText("Filter by book");
         
         statusFilter = new ComboBox<>();
-        statusFilter.getItems().addAll("Todos", "Ativos", "Devolvidos");
-        statusFilter.setValue("Todos");
+        statusFilter.getItems().addAll("All", "Actives", "Returned");
+        statusFilter.setValue("All");
         
         startDatePicker = new DatePicker();
-        startDatePicker.setPromptText("Data inicial");
+        startDatePicker.setPromptText("Start date");
         
         endDatePicker = new DatePicker();
         endDatePicker.setPromptText("Data final");
         
-        searchButton = new Button("Filtrar");
-        searchButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        searchButton = new Button("Filter");
+        searchButton.setStyle("-fx-background-color: #8243D9; -fx-text-fill: white;");
         
-        clearButton = new Button("Limpar");
-        clearButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white;");
+        clearButton = new Button("Clean");
+        clearButton.setStyle("-fx-background-color: #3C0F59; -fx-text-fill: white;");
         
-        exportButton = new Button("Exportar");
-        exportButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white;");
+        exportButton = new Button("Export");
+        exportButton.setStyle("-fx-background-color: #7845BF; -fx-text-fill: white;");
         
-        // Stats labels
-        totalLoansLabel = new Label("Total de Empréstimos: 0");
-        activeLoansLabel = new Label("Empréstimos Ativos: 0");
-        returnedLoansLabel = new Label("Empréstimos Devolvidos: 0");
-        
-        // Table
+        totalLoansLabel = new Label("Total Loans: 0");
+        activeLoansLabel = new Label("Active Loans: 0");
+        returnedLoansLabel = new Label("Returned Loans: 0");
+
         setupTable();
     }
 
@@ -101,41 +97,35 @@ public class LoanReportView extends VBox {
         tableView = new TableView<>();
         tableView.setItems(loans);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        
-        // ID Column
+
         TableColumn<Loan, Integer> idColumn = new TableColumn<>("ID");
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idColumn.setPrefWidth(50);
         
         // User Column
-        TableColumn<Loan, String> userColumn = new TableColumn<>("Usuário");
+        TableColumn<Loan, String> userColumn = new TableColumn<>("User");
         userColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
         userColumn.setPrefWidth(150);
         
-        // Book Column
-        TableColumn<Loan, String> bookColumn = new TableColumn<>("Livro");
+        TableColumn<Loan, String> bookColumn = new TableColumn<>("Book");
         bookColumn.setCellValueFactory(new PropertyValueFactory<>("bookTitle"));
         bookColumn.setPrefWidth(200);
         
-        // Loan Date Column
-        TableColumn<Loan, String> loanDateColumn = new TableColumn<>("Data Empréstimo");
+        TableColumn<Loan, String> loanDateColumn = new TableColumn<>("Loan Date");
         loanDateColumn.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
         loanDateColumn.setPrefWidth(120);
         
-        // Return Date Column
-        TableColumn<Loan, String> returnDateColumn = new TableColumn<>("Data Devolução");
+        TableColumn<Loan, String> returnDateColumn = new TableColumn<>("Return Date");
         returnDateColumn.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
         returnDateColumn.setPrefWidth(120);
         
-        // Status Column
         TableColumn<Loan, String> statusColumn = new TableColumn<>("Status");
         statusColumn.setCellValueFactory(cellData -> {
             boolean returned = cellData.getValue().isReturned();
-            return new javafx.beans.property.SimpleStringProperty(returned ? "Devolvido" : "Ativo");
+            return new javafx.beans.property.SimpleStringProperty(returned ? "Returned" : "Active");
         });
         statusColumn.setPrefWidth(80);
         
-        // Style status column
         statusColumn.setCellFactory(column -> new TableCell<Loan, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -145,10 +135,10 @@ public class LoanReportView extends VBox {
                     setStyle("");
                 } else {
                     setText(item);
-                    if ("Ativo".equals(item)) {
-                        setStyle("-fx-background-color: #ffeb3b; -fx-text-fill: black;");
+                    if ("Active".equals(item)) {
+                        setStyle("-fx-background-color: #8243D9; -fx-text-fill: white;");
                     } else {
-                        setStyle("-fx-background-color: #4caf50; -fx-text-fill: white;");
+                        setStyle("-fx-background-color: #3C0F59; -fx-text-fill: white;");
                     }
                 }
             }
@@ -159,41 +149,37 @@ public class LoanReportView extends VBox {
     }
 
     private void setupLayout() {
-        // Title
         Label titleLabel = new Label("Relatório de Empréstimos");
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
-        // Filter panel
         GridPane filterPanel = new GridPane();
         filterPanel.setHgap(10);
         filterPanel.setVgap(10);
         filterPanel.setPadding(new Insets(10));
         filterPanel.setStyle("-fx-border-color: #cccccc; -fx-border-radius: 5;");
         
-        filterPanel.add(new Label("Usuário:"), 0, 0);
+        filterPanel.add(new Label("User:"), 0, 0);
         filterPanel.add(userFilterField, 1, 0);
-        filterPanel.add(new Label("Livro:"), 2, 0);
+        filterPanel.add(new Label("Book:"), 2, 0);
         filterPanel.add(bookFilterField, 3, 0);
         
         filterPanel.add(new Label("Status:"), 0, 1);
         filterPanel.add(statusFilter, 1, 1);
-        filterPanel.add(new Label("Data Inicial:"), 2, 1);
+        filterPanel.add(new Label("Start Date:"), 2, 1);
         filterPanel.add(startDatePicker, 3, 1);
         
-        filterPanel.add(new Label("Data Final:"), 0, 2);
+        filterPanel.add(new Label("Final Date:"), 0, 2);
         filterPanel.add(endDatePicker, 1, 2);
         
         HBox buttonBox = new HBox(10);
         buttonBox.getChildren().addAll(searchButton, clearButton, exportButton);
         filterPanel.add(buttonBox, 2, 2, 2, 1);
         
-        // Stats panel
         HBox statsPanel = new HBox(30);
         statsPanel.setPadding(new Insets(10));
         statsPanel.setStyle("-fx-background-color: #f5f5f5; -fx-border-radius: 5;");
         statsPanel.getChildren().addAll(totalLoansLabel, activeLoansLabel, returnedLoansLabel);
         
-        // Main layout
         this.setSpacing(10);
         this.setPadding(new Insets(10));
         this.getChildren().addAll(titleLabel, filterPanel, statsPanel, tableView);
@@ -206,14 +192,16 @@ public class LoanReportView extends VBox {
         clearButton.setOnAction(e -> clearFilters());
         exportButton.setOnAction(e -> exportData());
         
-        // Real-time filtering
-        userFilterField.textProperty().addListener((obs, oldVal, newVal) -> {
+        userFilterField.textProperty().addListener((obs,
+                                                    oldVal,
+                                                    newVal) -> {
             if (newVal.isEmpty()) {
                 applyFilters();
             }
         });
         
-        bookFilterField.textProperty().addListener((obs, oldVal, newVal) -> {
+        bookFilterField.textProperty().addListener((obs,
+                                                    oldVal, newVal) -> {
             if (newVal.isEmpty()) {
                 applyFilters();
             }
@@ -221,12 +209,10 @@ public class LoanReportView extends VBox {
     }
 
     private void loadData() {
-        // Run database operation in background thread
         new Thread(() -> {
             try {
                 List<Loan> allLoans = dao.getAllLoans();
                 
-                // Update UI in JavaFX Application Thread
                 Platform.runLater(() -> {
                     loans.clear();
                     loans.addAll(allLoans);
@@ -235,14 +221,13 @@ public class LoanReportView extends VBox {
                 
             } catch (SQLException e) {
                 Platform.runLater(() -> {
-                    showError("Erro ao carregar dados", "Erro na consulta ao banco: " + e.getMessage());
+                    showError("Error loading data", "Error querying the database: " + e.getMessage());
                 });
             }
         }).start();
     }
 
     private void applyFilters() {
-        // Run database operation in background thread
         new Thread(() -> {
             try {
                 String userFilter = userFilterField.getText().trim();
@@ -253,14 +238,12 @@ public class LoanReportView extends VBox {
 
                 List<Loan> filteredLoansTemp;
 
-                // Apply date range filter first if both dates are selected
                 if (startDate != null && endDate != null) {
                     filteredLoansTemp = dao.getLoansByDateRange(startDate.toString(), endDate.toString());
                 } else {
                     filteredLoansTemp = dao.getAllLoans();
                 }
 
-                // Apply other filters
                 if (!userFilter.isEmpty()) {
                     filteredLoansTemp = filteredLoansTemp.stream()
                         .filter(loan -> loan.getUserName().toLowerCase().contains(userFilter.toLowerCase()))
@@ -273,9 +256,8 @@ public class LoanReportView extends VBox {
                         .toList();
                 }
 
-                // Apply status filter
-                if (!"Todos".equals(statusFilterValue)) {
-                    boolean showReturned = "Devolvidos".equals(statusFilterValue);
+                if (!"All".equals(statusFilterValue)) {
+                    boolean showReturned = "Returned".equals(statusFilterValue);
                     filteredLoansTemp = filteredLoansTemp.stream()
                         .filter(loan -> loan.isReturned() == showReturned)
                         .toList();
@@ -283,7 +265,6 @@ public class LoanReportView extends VBox {
 
                 final List<Loan> filteredLoans = filteredLoansTemp;
 
-                // Update UI in JavaFX Application Thread
                 Platform.runLater(() -> {
                     loans.clear();
                     loans.addAll(filteredLoans);
@@ -292,7 +273,8 @@ public class LoanReportView extends VBox {
 
             } catch (SQLException e) {
                 Platform.runLater(() -> {
-                    showError("Erro ao aplicar filtros", "Erro na consulta ao banco: " + e.getMessage());
+                    showError("Error when applying filters",
+                            "Error when consulting the bank: " + e.getMessage());
                 });
             }
         }).start();
@@ -301,35 +283,33 @@ public class LoanReportView extends VBox {
     private void clearFilters() {
         userFilterField.clear();
         bookFilterField.clear();
-        statusFilter.setValue("Todos");
+        statusFilter.setValue("All");
         startDatePicker.setValue(null);
         endDatePicker.setValue(null);
         loadData();
     }
 
     private void exportData() {
-        // Simple export to console (could be enhanced to save to file)
         StringBuilder sb = new StringBuilder();
-        sb.append("RELATÓRIO DE EMPRÉSTIMOS\n");
-        sb.append("========================\n\n");
+        sb.append("LOAN REPORT\n");
         
         for (Loan loan : loans) {
-            sb.append(String.format("ID: %d | Usuário: %s | Livro: %s | Data: %s | Status: %s\n",
+            sb.append(String.format("ID: %d | User: %s | Book: %s | Date: %s | Status: %s\n",
                     loan.getId(),
                     loan.getUserName(),
                     loan.getBookTitle(),
                     loan.getLoanDate(),
-                    loan.isReturned() ? "Devolvido" : "Ativo"));
+                    loan.isReturned() ? "Returned" : "Active"));
         }
         
-        sb.append(String.format("\nEstatísticas:\n"));
-        sb.append(String.format("Total: %d empréstimos\n", loans.size()));
-        sb.append(String.format("Ativos: %d\n", (int) loans.stream().filter(l -> !l.isReturned()).count()));
-        sb.append(String.format("Devolvidos: %d\n", (int) loans.stream().filter(Loan::isReturned).count()));
+        sb.append(String.format("\nStatistics:\n"));
+        sb.append(String.format("All: %d Loans\n", loans.size()));
+        sb.append(String.format("Actives: %d\n", (int) loans.stream().filter(l -> !l.isReturned()).count()));
+        sb.append(String.format("Returned\n: %d\n", (int) loans.stream().filter(Loan::isReturned).count()));
         
         System.out.println(sb.toString());
         
-        showInfo("Exportação realizada", "Relatório exportado para o console. Verifique a saída do sistema.");
+        showInfo("Export carried out", "Report exported to console.");
     }
 
     private void updateStats() {
@@ -337,15 +317,15 @@ public class LoanReportView extends VBox {
         long active = loans.stream().filter(loan -> !loan.isReturned()).count();
         long returned = loans.stream().filter(Loan::isReturned).count();
         
-        totalLoansLabel.setText("Total de Empréstimos: " + total);
-        activeLoansLabel.setText("Empréstimos Ativos: " + active);
-        returnedLoansLabel.setText("Empréstimos Devolvidos: " + returned);
+        totalLoansLabel.setText("All Loans: " + total);
+        activeLoansLabel.setText("Active Loans: " + active);
+        returnedLoansLabel.setText("Returned Loans: " + returned);
     }
 
     private void showError(String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro");
+            alert.setTitle("Error");
             alert.setHeaderText(title);
             alert.setContentText(message);
             alert.showAndWait();
@@ -355,7 +335,7 @@ public class LoanReportView extends VBox {
     private void showInfo(String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Informação");
+            alert.setTitle("Information");
             alert.setHeaderText(title);
             alert.setContentText(message);
             alert.showAndWait();

@@ -37,7 +37,6 @@ public class LoanDAO {
                 loans.add(loan);
             }
         }
-        
         return loans;
     }
     

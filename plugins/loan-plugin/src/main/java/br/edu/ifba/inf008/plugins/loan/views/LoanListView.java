@@ -43,7 +43,7 @@ public class LoanListView extends BorderPane {
         setupTableColumns();
         
         searchField = new TextField();
-        searchField.setPromptText("Type tp search");
+        searchField.setPromptText("Type to search");
         searchField.textProperty().addListener((obs,
                                                 oldText,
                                                 newText) -> performSearch());
@@ -57,7 +57,7 @@ public class LoanListView extends BorderPane {
         activeOnlyCheckBox.setOnAction(e -> performSearch());
         
         newLoanButton = new Button("New Loan");
-        newLoanButton.setStyle("-fx-background-color: #C6A7F2; " +
+        newLoanButton.setStyle("-fx-background-color: #7845BF; " +
                                "-fx-text-fill: white; " +
                                "-fx-padding: 8 16 8 16; " +
                                "-fx-border-radius: 4px; -fx-background-radius: 4px;");
@@ -106,10 +106,13 @@ public class LoanListView extends BorderPane {
         // Action column with consistent button styling
         TableColumn<Loan, Void> actionColumn = new TableColumn<>("Actions");
         actionColumn.setCellFactory(param -> new TableCell<Loan, Void>() {
-            private final Button returnButton = new Button("Give back");
-            
+            private final Button returnButton = new Button("Return");
             {
-                returnButton.setStyle("-fx-background-color: #C6A7F2; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-border-radius: 3px; -fx-background-radius: 3px;");
+                returnButton.setStyle("-fx-background-color: #C6A7F2; " +
+                                      "-fx-text-fill: white; " +
+                                      "-fx-padding: 4 8 4 8; " +
+                                      "-fx-border-radius: 3px; " +
+                                      "-fx-background-radius: 3px;");
                 returnButton.setOnAction(event -> {
                     Loan loan = getTableView().getItems().get(getIndex());
                     if (!loan.isReturned()) {
@@ -126,8 +129,12 @@ public class LoanListView extends BorderPane {
                 } else {
                     Loan loan = getTableView().getItems().get(getIndex());
                     if (loan.isReturned()) {
-                        Label returnedLabel = new Label("Devolvido");
-                        returnedLabel.setStyle("-fx-background-color: #4caf50; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-border-radius: 3px; -fx-background-radius: 3px;");
+                        Label returnedLabel = new Label("Returned");
+                        returnedLabel.setStyle("-fx-background-color: #170126; " +
+                                               "-fx-text-fill: white; " +
+                                               "-fx-padding: 4 8 4 8; " +
+                                               "-fx-border-radius: 3px; " +
+                                               "-fx-background-radius: 3px;");
                         setGraphic(returnedLabel);
                     } else {
                         setGraphic(returnButton);
@@ -144,34 +151,31 @@ public class LoanListView extends BorderPane {
     private void setupLayout() {
         setPadding(new Insets(10));
         
-        // Title
-        Label titleLabel = new Label("Gerenciamento de Empréstimos");
+        Label titleLabel = new Label("Loan Management");
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
-        // Top controls with consistent styling
         HBox searchBox = new HBox(10);
         searchBox.setPadding(new Insets(10));
         searchBox.setStyle("-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-background-color: #f9f9f9;");
         searchBox.getChildren().addAll(
-            new Label("Pesquisar:"), searchField,
-            new Label("Por:"), searchTypeCombo,
+            new Label("Search:"), searchField,
+            new Label("By:"), searchTypeCombo,
             activeOnlyCheckBox
         );
         
-        // Top bar with search and new loan button
         HBox topBar = new HBox(10);
         topBar.getChildren().addAll(searchBox, newLoanButton);
         topBar.setStyle("-fx-alignment: center-left;");
         
-        // Make search box grow and button stay on the right
         HBox.setHgrow(searchBox, javafx.scene.layout.Priority.ALWAYS);
         
-        // Status bar with consistent styling
         VBox statusBox = new VBox(5);
         statusBox.getChildren().addAll(progressIndicator, statusLabel);
-        statusBox.setStyle("-fx-alignment: center; -fx-background-color: #f5f5f5; -fx-border-radius: 5; -fx-padding: 10;");
+        statusBox.setStyle("-fx-alignment: center; " +
+                           "-fx-background-color: #C6A7F2;" +
+                           "-fx-border-radius: 5; " +
+                           "-fx-padding: 10;");
         
-        // Main layout
         VBox mainContent = new VBox(10);
         mainContent.getChildren().addAll(titleLabel, topBar, loanTable, statusBox);
         VBox.setVgrow(loanTable, Priority.ALWAYS);
@@ -180,7 +184,7 @@ public class LoanListView extends BorderPane {
     }
     
     private void loadLoans() {
-        showLoading(true, "Carregando empréstimos...");
+        showLoading(true, "Loading loans");
         
         Task<List<Loan>> task = new Task<List<Loan>>() {
             @Override
@@ -193,14 +197,14 @@ public class LoanListView extends BorderPane {
                 loanTable.getItems().clear();
                 loanTable.getItems().addAll(getValue());
                 showLoading(false, null);
-                updateStatusLabel(getValue().size() + " empréstimo(s) encontrado(s)");
+                updateStatusLabel(getValue().size() + "Loan(s) found");
             }
             
             @Override
             protected void failed() {
                 showLoading(false, null);
-                showError("Erro ao carregar empréstimos", getException());
-                updateStatusLabel("Erro ao carregar dados");
+                showError("Error loading loans", getException());
+                updateStatusLabel("Error loading data");
             }
         };
         
@@ -212,7 +216,7 @@ public class LoanListView extends BorderPane {
         String searchType = searchTypeCombo.getValue();
         boolean activeOnly = activeOnlyCheckBox.isSelected();
         
-        showLoading(true, "Pesquisando...");
+        showLoading(true, "Searching");
         
         Task<List<Loan>> task = new Task<List<Loan>>() {
             @Override
@@ -225,24 +229,21 @@ public class LoanListView extends BorderPane {
                     results = loanDAO.findAll();
                 } else {
                     switch (searchType) {
-                        case "Usuário":
+                        case "User":
                             results = loanDAO.searchByUserName(searchText);
                             break;
-                        case "Livro":
+                        case "Book":
                             results = loanDAO.searchByBookTitle(searchText);
                             break;
                         default:
-                            // Search in both user name and book title
                             results = loanDAO.searchByUserName(searchText);
                             results.addAll(loanDAO.searchByBookTitle(searchText));
-                            // Remove duplicates
                             results = results.stream().distinct().collect(java.util.stream.Collectors.toList());
                             break;
                     }
                 }
                 
                 if (activeOnly && !searchText.isEmpty()) {
-                    // Filter active loans from search results
                     results = results.stream()
                         .filter(loan -> !loan.isReturned())
                         .collect(java.util.stream.Collectors.toList());
@@ -256,14 +257,14 @@ public class LoanListView extends BorderPane {
                 loanTable.getItems().clear();
                 loanTable.getItems().addAll(getValue());
                 showLoading(false, null);
-                updateStatusLabel(getValue().size() + " empréstimo(s) encontrado(s)");
+                updateStatusLabel(getValue().size() + "Loan(s) found");
             }
             
             @Override
             protected void failed() {
                 showLoading(false, null);
-                showError("Erro na pesquisa", getException());
-                updateStatusLabel("Erro na pesquisa");
+                showError("Search error", getException());
+                updateStatusLabel("Search error");
             }
         };
         
@@ -272,10 +273,12 @@ public class LoanListView extends BorderPane {
     
     private void returnLoan(Loan loan) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmar Devolução");
-        alert.setHeaderText("Devolver empréstimo");
-        alert.setContentText("Deseja confirmar a devolução do livro '" + loan.getBookTitle() + 
-                            "' pelo usuário '" + loan.getUserName() + "'?");
+        alert.setTitle("Confirm Return");
+        alert.setHeaderText("Return loan");
+        alert.setContentText("Do you wanna confirm the return of the book? '" +
+                              loan.getBookTitle() +
+                              "' by user '" +
+                              loan.getUserName() + "'?");
         
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -290,16 +293,16 @@ public class LoanListView extends BorderPane {
                 @Override
                 protected void succeeded() {
                     if (getValue()) {
-                        showInfo("Sucesso", "Empréstimo devolvido com sucesso!");
-                        performSearch(); // Refresh the list
+                        showInfo("Successfully", "Loan returned successfully");
+                        performSearch();
                     } else {
-                        showError("Erro", "Não foi possível devolver o empréstimo.");
+                        showError("Error", "Unable to return loan.");
                     }
                 }
                 
                 @Override
                 protected void failed() {
-                    showError("Erro ao devolver empréstimo", getException());
+                    showError("Error returning loan", getException());
                 }
             };
             
@@ -321,16 +324,16 @@ public class LoanListView extends BorderPane {
         statusLabel.setText(message);
         statusLabel.setVisible(true);
         
-        // Hide status after 3 seconds
         javafx.animation.Timeline timeline = new javafx.animation.Timeline(
-            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(3), e -> statusLabel.setVisible(false))
+            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(0.1),
+                                         e -> statusLabel.setVisible(false))
         );
         timeline.play();
     }
     
     private void showError(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro");
+        alert.setTitle("Error");
         alert.setHeaderText(title);
         alert.setContentText(message);
         alert.showAndWait();
@@ -346,7 +349,7 @@ public class LoanListView extends BorderPane {
     
     private void showInfo(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Informação");
+        alert.setTitle("Information");
         alert.setHeaderText(title);
         alert.setContentText(message);
         alert.showAndWait();
@@ -354,14 +357,14 @@ public class LoanListView extends BorderPane {
     
     private void showCreateLoanDialog() {
         Stage dialog = new Stage();
-        dialog.setTitle("Criar Novo Empréstimo");
+        dialog.setTitle("Create New Loan");
         dialog.initModality(javafx.stage.Modality.APPLICATION_MODAL);
         dialog.setResizable(false);
         
         LoanCreateView createView = new LoanCreateView();
         createView.setOnLoanCreated(() -> {
             dialog.close();
-            performSearch(); // Refresh the loan list
+            performSearch();
         });
         
         Scene scene = new Scene(createView, 500, 400);
@@ -375,7 +378,6 @@ public class LoanListView extends BorderPane {
             getStylesheets().add(cssPath);
             loanTable.getStyleClass().add("loan-table");
         } catch (Exception e) {
-            // CSS file not found, continue without styling
             System.out.println("CSS file not found: " + e.getMessage());
         }
     }

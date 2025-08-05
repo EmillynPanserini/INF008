@@ -13,38 +13,34 @@ public class ReportPlugin implements IPlugin {
     @Override
     public boolean init() {
         try {
-            // Test database connection
             if (!DatabaseConnection.testConnection()) {
                 showDatabaseError();
                 return false;
             }
             
-            // Get UI controller from core
             IUIController uiController = ICore.getInstance().getUIController();
             if (uiController == null) {
-                System.err.println("ReportPlugin: UIController não encontrado");
+                System.err.println("ReportPlugin: UIController not found");
                 return false;
             }
             
-            // Create the report view
             LoanReportView reportView = new LoanReportView();
             
-            // Create menu item
-            boolean menuCreated = uiController.createMenuItem("Relatórios", "Relatório de Empréstimos") != null;
+            boolean menuCreated = uiController.createMenuItem("Loans",
+                                                            "Loans Report") != null;
             
-            // Create tab
-            boolean tabCreated = uiController.createTab("Relatório de Empréstimos", reportView);
+            boolean tabCreated = uiController.createTab("Loans Report", reportView);
             
             if (menuCreated && tabCreated) {
-                System.out.println("ReportPlugin: Plugin inicializado com sucesso");
+                System.out.println("ReportPlugin: Plugin initialized");
                 return true;
             } else {
-                System.err.println("ReportPlugin: Erro ao criar interface do usuário");
+                System.err.println("ReportPlugin: Error creating user interface");
                 return false;
             }
             
         } catch (Exception e) {
-            System.err.println("ReportPlugin: Erro durante inicialização - " + e.getMessage());
+            System.err.println("ReportPlugin: Error during initialization" + e.getMessage());
             return false;
         }
     }
@@ -52,10 +48,9 @@ public class ReportPlugin implements IPlugin {
     private void showDatabaseError() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Conexão");
-            alert.setHeaderText("Erro ao conectar com o banco de dados");
-            alert.setContentText("Não foi possível estabelecer conexão com o banco de dados.\n" +
-                               "Verifique se o MariaDB está rodando e as configurações estão corretas.");
+            alert.setTitle("Connection Error");
+            alert.setHeaderText("Error connecting to database\n");
+            alert.setContentText("Unable to establish database connection");
             alert.showAndWait();
         });
     }

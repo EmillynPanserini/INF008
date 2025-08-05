@@ -13,38 +13,34 @@ public class LoanPlugin implements IPlugin {
     @Override
     public boolean init() {
         try {
-            // Test database connection
             if (!DatabaseConnection.testConnection()) {
                 showDatabaseError();
                 return false;
             }
             
-            // Get UI controller from core
             IUIController uiController = ICore.getInstance().getUIController();
             if (uiController == null) {
-                System.err.println("LoanPlugin: UIController não encontrado");
+                System.err.println("LoanPlugin: UIController not found");
                 return false;
             }
             
-            // Create the loan management view
             LoanListView loanListView = new LoanListView();
             
-            // Create menu item
-            boolean menuCreated = uiController.createMenuItem("Operações", "Empréstimos") != null;
-            
-            // Create tab
-            boolean tabCreated = uiController.createTab("Empréstimos", loanListView);
+            boolean menuCreated = uiController.createMenuItem("Operations",
+                                                            "Loans") != null;
+
+            boolean tabCreated = uiController.createTab("Loans", loanListView);
             
             if (menuCreated && tabCreated) {
-                System.out.println("LoanPlugin: Plugin inicializado com sucesso");
+                System.out.println("LoanPlugin: Plugin initialized");
                 return true;
             } else {
-                System.err.println("LoanPlugin: Erro ao criar interface do usuário");
+                System.err.println("LoanPlugin: Error creating user interface");
                 return false;
             }
             
         } catch (Exception e) {
-            System.err.println("LoanPlugin: Erro durante inicialização - " + e.getMessage());
+            System.err.println("LoanPlugin: Error during initialization - " + e.getMessage());
             java.util.logging.Logger.getLogger(LoanPlugin.class.getName()).log(java.util.logging.Level.SEVERE, "Erro durante inicialização", e);
             return false;
         }
@@ -53,10 +49,9 @@ public class LoanPlugin implements IPlugin {
     private void showDatabaseError() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Conexão");
-            alert.setHeaderText("Erro ao conectar com o banco de dados");
-            alert.setContentText("Não foi possível estabelecer conexão com o banco de dados.\n" +
-                               "Verifique se o MariaDB está rodando e as configurações estão corretas.");
+            alert.setTitle("Connection Error");
+            alert.setHeaderText("Error connecting to database");
+            alert.setContentText("Unable to establish database connection.\n");
             alert.showAndWait();
         });
     }

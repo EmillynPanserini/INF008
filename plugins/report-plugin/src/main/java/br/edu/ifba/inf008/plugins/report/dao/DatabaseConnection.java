@@ -14,7 +14,7 @@ public class DatabaseConnection {
             Class.forName("org.mariadb.jdbc.Driver");
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver MariaDB não encontrado", e);
+            throw new SQLException("MariaDB driver not found", e);
         }
     }
 
@@ -22,7 +22,7 @@ public class DatabaseConnection {
         try (Connection conn = getConnection()) {
             return conn != null && !conn.isClosed();
         } catch (SQLException e) {
-            System.err.println("Erro ao testar conexão: " + e.getMessage());
+            System.err.println("Error testing connection: " + e.getMessage());
             return false;
         }
     }

@@ -23,25 +23,54 @@ public class Loan {
         this.returned = false;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public int getUserId() { return userId; }
-    public int getBookId() { return bookId; }
-    public String getBookTitle() { return bookTitle; }
-    public String getUserName() { return userName; }
-    public String getLoanDate() { return loanDate; }
-    public String getReturnDate() { return returnDate; }
-    public boolean isReturned() { return returned; }
-
-    // Setters
-    public void setId(int id) { this.id = id; }
-    public void setUserId(int userId) { this.userId = userId; }
-    public void setBookId(int bookId) { this.bookId = bookId; }
-    public void setBookTitle(String bookTitle) { this.bookTitle = bookTitle; }
-    public void setUserName(String userName) { this.userName = userName; }
-    public void setLoanDate(String loanDate) { this.loanDate = loanDate; }
-    public void setReturnDate(String returnDate) { this.returnDate = returnDate; }
-    public void setReturned(boolean returned) { this.returned = returned; }
+    public int getId() {
+        return id;
+    }
+    public int getUserId() {
+        return userId;
+    }
+    public int getBookId() {
+        return bookId;
+    }
+    public String getBookTitle() {
+        return bookTitle;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public String getLoanDate() {
+        return loanDate;
+    }
+    public String getReturnDate() {
+        return returnDate;
+    }
+    public boolean isReturned() {
+        return returned;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public void setLoanDate(String loanDate) {
+        this.loanDate = loanDate;
+    }
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
+    }
+    public void setReturned(boolean returned) {
+        this.returned = returned;
+    }
 
     @Override
     public String toString() {

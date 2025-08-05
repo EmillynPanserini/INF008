@@ -2,7 +2,7 @@
 
 /* Form field validation styles */
 .field-error {
-  -fx-border-color: #dc3545 !important;
+  -fx-border-color: red !important;
   -fx-border-width: 2px !important;
   -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.5), 4, 0, 0, 0) !important;
 }
@@ -16,7 +16,7 @@
 /* ComboBox and DatePicker error states */
 .combo-box.field-error,
 .date-picker.field-error {
-  -fx-border-color: #dc3545 !important;
+  -fx-border-color: red !important;
   -fx-border-width: 2px !important;
   -fx-effect: dropshadow(gaussian, rgba(220, 53, 69, 0.5), 4, 0, 0, 0) !important;
 }
@@ -30,8 +30,8 @@
 
 /* Form styling */
 .loan-form {
-  -fx-background-color: #f8f9fa;
-  -fx-border-color: #dee2e6;
+  -fx-background-color: #C6A7F2;
+  -fx-border-color: #995ded;
   -fx-border-width: 1px;
   -fx-border-radius: 8px;
   -fx-background-radius: 8px;
@@ -39,13 +39,13 @@
 
 .loan-form .label {
   -fx-font-weight: bold;
-  -fx-text-fill: #495057;
+  -fx-text-fill: #170126;
 }
 
 .loan-form .combo-box,
 .loan-form .date-picker,
 .loan-form .text-field {
-  -fx-border-color: #ced4da;
+  -fx-border-color: #C6A7F2;
   -fx-border-width: 1px;
   -fx-border-radius: 4px;
   -fx-background-radius: 4px;
@@ -55,11 +55,10 @@
 .loan-form .combo-box:focused,
 .loan-form .date-picker:focused,
 .loan-form .text-field:focused {
-  -fx-border-color: #007bff;
-  -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.25), 4, 0, 0, 0);
+  -fx-border-color: #8243D9;
+  -fx-effect: dropshadow(gaussian, rgba(198, 167, 242, 1), 4, 0, 0, 0);
 }
 
-/* Button styling */
 .create-button {
   -fx-background-color: #28a745;
   -fx-text-fill: white;
@@ -105,7 +104,7 @@
 
 /* New loan button */
 .new-loan-button {
-  -fx-background-color: #007bff;
+  -fx-background-color: #8243D9;
   -fx-text-fill: white;
   -fx-font-weight: bold;
   -fx-padding: 8px 16px;
@@ -115,11 +114,11 @@
 }
 
 .new-loan-button:hover {
-  -fx-background-color: #0056b3;
+  -fx-background-color: #722cd3;
 }
 
 .new-loan-button:pressed {
-  -fx-background-color: #004085;
+  -fx-background-color: #722cd3;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 1, 0, 0, 0);
 }
 
@@ -135,7 +134,7 @@
 }
 
 .status-info {
-  -fx-text-fill: #17a2b8;
+  -fx-text-fill: #8243D9;
   -fx-font-weight: bold;
 }
 
@@ -146,13 +145,10 @@
 }
 
 .loan-table .table-row-cell:selected {
-  -fx-background-color: #007bff;
+  -fx-background-color: #8243D9;
   -fx-text-background-color: white;
 }
 
-.loan-table .table-row-cell:hover {
-  -fx-background-color: #f8f9fa;
-}
 
 /* ComboBox styling for unavailable books */
 .combo-box .list-cell:disabled {

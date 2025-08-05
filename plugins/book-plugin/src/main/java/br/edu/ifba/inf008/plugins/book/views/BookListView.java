@@ -42,12 +42,10 @@ public class BookListView extends BorderPane {
     }
     
     private void initializeComponents() {
-        // Search field
         searchField = new TextField();
         searchField.setPromptText("Search books");
         searchField.setPrefWidth(300);
         
-        // Buttons with consistent styling
         addButton = new Button("Add");
         addButton.setStyle("-fx-background-color: #170126; " +
                             "-fx-text-fill: white; " +
@@ -71,8 +69,8 @@ public class BookListView extends BorderPane {
                               "-fx-background-radius: 4px;");
         deleteButton.setDisable(true);
         
-        refreshButton = new Button("Update");
-        refreshButton.setStyle("-fx-background-color: #C6A7F2; " +
+        refreshButton = new Button("Refresh");
+        refreshButton.setStyle("-fx-background-color: #692fba; " +
                                "-fx-text-fill: white; " +
                                "-fx-padding: 8 16 8 16; " +
                                "-fx-border-radius: 4px; " +

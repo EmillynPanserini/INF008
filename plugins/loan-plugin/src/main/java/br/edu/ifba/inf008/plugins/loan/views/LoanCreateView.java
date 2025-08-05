@@ -410,7 +410,7 @@ public class LoanCreateView extends BorderPane {
         statusLabel.setVisible(true);
         
         javafx.animation.Timeline timeline = new javafx.animation.Timeline(
-            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(2), e -> statusLabel.setVisible(false))
+            new javafx.animation.KeyFrame(javafx.util.Duration.seconds(0.1), e -> statusLabel.setVisible(false))
         );
         timeline.play();
     }
