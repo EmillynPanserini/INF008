@@ -71,8 +71,8 @@ public class BookDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar livro por ID: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao buscar livro por ID", e);
+            System.err.println("Error searching for book by ID: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error searching for book by ID", e);
         }
 
         return Optional.empty();
@@ -101,8 +101,8 @@ public class BookDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir livro: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao inserir livro", e);
+            System.err.println("Error inserting book: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error inserting book:", e);
         }
 
         return false;
@@ -124,8 +124,8 @@ public class BookDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar livro: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao atualizar livro", e);
+            System.err.println("Error updating book: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error updating book", e);
         }
 
         return false;
@@ -141,8 +141,8 @@ public class BookDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar livro: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao deletar livro", e);
+            System.err.println("Error deleting book: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error deleting book", e);
         }
 
         return false;
@@ -158,8 +158,8 @@ public class BookDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao diminuir cópias disponíveis: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao diminuir cópias disponíveis", e);
+            System.err.println("Error decreasing available copies: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error decreasing available copies:", e);
         }
 
         return false;
@@ -175,8 +175,8 @@ public class BookDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao aumentar cópias disponíveis: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao aumentar cópias disponíveis", e);
+            System.err.println("Error increasing available copies: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error increasing available copies:", e);
         }
 
         return false;
@@ -197,8 +197,8 @@ public class BookDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar livros por título: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao buscar livros por título", e);
+            System.err.println("Error searching for books by title: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error searching for books by title:", e);
         }
 
         return books;
@@ -220,8 +220,8 @@ public class BookDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao verificar ISBN existente: " + e.getMessage());
-            logger.log(Level.SEVERE, "Erro ao verificar ISBN existente", e);
+            System.err.println("Error checking existing ISBN: " + e.getMessage());
+            logger.log(Level.SEVERE, "Error checking existing ISBN:", e);
         }
 
         return false;

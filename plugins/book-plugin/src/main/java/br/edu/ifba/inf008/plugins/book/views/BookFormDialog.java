@@ -22,27 +22,25 @@ public class BookFormDialog extends Dialog<Book> {
     public BookFormDialog(Book book) {
         this.currentBook = book;
         
-        setTitle(book == null ? "Adicionar Livro" : "Editar Livro");
-        setHeaderText(book == null ? "Cadastro de novo livro" : "Edição de livro");
+        setTitle(book == null ? "Add Book" : "Edit Book");
+        setHeaderText(book == null ? "New book registration" : "Book editing");
         
-        // Set the button types with consistent styling
-        ButtonType saveButtonType = new ButtonType("Salvar", ButtonBar.ButtonData.OK_DONE);
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
         getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
         
-        // Create the form
         GridPane grid = new GridPane();
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
-        grid.setStyle("-fx-background-color: #f8f9fa;");
+        grid.setStyle("-fx-background-color: #C6A7F2;");
         
         titleField = new TextField();
-        titleField.setPromptText("Título do livro");
+        titleField.setPromptText("Book Title");
         titleField.setPrefWidth(300);
         titleField.setStyle("-fx-padding: 8px 12px; -fx-border-radius: 4px; -fx-background-radius: 4px;");
         
         authorField = new TextField();
-        authorField.setPromptText("Autor do livro");
+        authorField.setPromptText("Author");
         authorField.setPrefWidth(300);
         authorField.setStyle("-fx-padding: 8px 12px; -fx-border-radius: 4px; -fx-background-radius: 4px;");
         
@@ -52,25 +50,25 @@ public class BookFormDialog extends Dialog<Book> {
         isbnField.setStyle("-fx-padding: 8px 12px; -fx-border-radius: 4px; -fx-background-radius: 4px;");
         
         yearField = new TextField();
-        yearField.setPromptText("Ano de publicação");
+        yearField.setPromptText("Publication Year");
         yearField.setPrefWidth(300);
         yearField.setStyle("-fx-padding: 8px 12px; -fx-border-radius: 4px; -fx-background-radius: 4px;");
         
         copiesField = new TextField();
-        copiesField.setPromptText("Número de cópias");
+        copiesField.setPromptText("Number of copies");
         copiesField.setPrefWidth(300);
         copiesField.setStyle("-fx-padding: 8px 12px; -fx-border-radius: 4px; -fx-background-radius: 4px;");
         
         // Labels with consistent styling
-        Label titleLabel = new Label("Título:");
+        Label titleLabel = new Label("Title:");
         titleLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #495057;");
-        Label authorLabel = new Label("Autor:");
+        Label authorLabel = new Label("Author:");
         authorLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #495057;");
         Label isbnLabel = new Label("ISBN:");
         isbnLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #495057;");
-        Label yearLabel = new Label("Ano:");
+        Label yearLabel = new Label("Year:");
         yearLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #495057;");
-        Label copiesLabel = new Label("Cópias:");
+        Label copiesLabel = new Label("Copies:");
         copiesLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #495057;");
         
         grid.add(titleLabel, 0, 0);
@@ -84,7 +82,6 @@ public class BookFormDialog extends Dialog<Book> {
         grid.add(copiesLabel, 0, 4);
         grid.add(copiesField, 1, 4);
         
-        // Load existing data if editing
         if (book != null) {
             titleField.setText(book.getTitle());
             authorField.setText(book.getAuthor());
@@ -95,13 +92,12 @@ public class BookFormDialog extends Dialog<Book> {
         
         getDialogPane().setContent(grid);
         
-        // Style the buttons
         Button saveButton = (Button) getDialogPane().lookupButton(saveButtonType);
-        saveButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 8 16 8 16;");
+        saveButton.setStyle("-fx-background-color: #7845BF; -fx-text-fill: white; -fx-padding: 8 16 8 16;");
         saveButton.setDisable(true);
         
         Button cancelButton = (Button) getDialogPane().lookupButton(ButtonType.CANCEL);
-        cancelButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 8 16 8 16;");
+        cancelButton.setStyle("-fx-background-color: #3C0F59; -fx-text-fill: white; -fx-padding: 8 16 8 16;");
         
         // Enable/Disable save button depending on whether form is valid
         saveButton.setDisable(true);
@@ -113,10 +109,8 @@ public class BookFormDialog extends Dialog<Book> {
         yearField.textProperty().addListener((observable, oldValue, newValue) -> validateForm(saveButton));
         copiesField.textProperty().addListener((observable, oldValue, newValue) -> validateForm(saveButton));
         
-        // Initial validation
         validateForm(saveButton);
         
-        // Convert the result when the save button is clicked
         setResultConverter(dialogButton -> {
             if (dialogButton == saveButtonType) {
                 return createBookFromForm();
@@ -124,10 +118,8 @@ public class BookFormDialog extends Dialog<Book> {
             return null;
         });
         
-        // Request focus on title field
         titleField.requestFocus();
         
-        // Apply styles
         applyStyles();
     }
     
@@ -193,27 +185,27 @@ public class BookFormDialog extends Dialog<Book> {
             StringBuilder errors = new StringBuilder();
             
             if (titleField.getText().trim().isEmpty()) {
-                errors.append("- Título é obrigatório\n");
+                errors.append("Title is mandatory\n");
             }
             if (authorField.getText().trim().isEmpty()) {
-                errors.append("- Autor é obrigatório\n");
+                errors.append("Author is mandatory\n");
             }
             if (isbnField.getText().trim().isEmpty()) {
-                errors.append("- ISBN é obrigatório\n");
+                errors.append("ISBN is mandatory\n");
             }
             if (!isValidYear(yearField.getText())) {
-                errors.append("- Ano deve ser um número válido entre 1 e ")
+                errors.append("Year must be a valid number")
                       .append(java.time.Year.now().getValue())
                       .append("\n");
             }
             if (!isValidCopies(copiesField.getText())) {
-                errors.append("- Número de cópias deve ser um número não negativo\n");
+                errors.append("Number of copies must be a non-negative number\n");
             }
             
             if (errors.length() > 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro de Validação");
-                alert.setHeaderText("Por favor, corrija os seguintes erros:");
+                alert.setTitle("Validation Error");
+                alert.setHeaderText("Please correct the following errors:");
                 alert.setContentText(errors.toString());
                 alert.showAndWait();
                 return null;
@@ -228,9 +220,9 @@ public class BookFormDialog extends Dialog<Book> {
             return book;
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Validação");
-            alert.setHeaderText("Dados inválidos");
-            alert.setContentText("Por favor, verifique os dados inseridos: " + e.getMessage());
+            alert.setTitle("Validation Error\n");
+            alert.setHeaderText("Invalid data");
+            alert.setContentText("Check the data entered: " + e.getMessage());
             alert.showAndWait();
             return null;
         }

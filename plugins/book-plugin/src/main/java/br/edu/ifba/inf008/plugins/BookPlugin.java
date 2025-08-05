@@ -13,38 +13,34 @@ public class BookPlugin implements IPlugin {
     @Override
     public boolean init() {
         try {
-            // Test database connection
             if (!DatabaseConnection.testConnection()) {
                 showDatabaseError();
                 return false;
             }
             
-            // Get UI controller from core
             IUIController uiController = ICore.getInstance().getUIController();
             if (uiController == null) {
-                System.err.println("BookPlugin: UIController não encontrado");
+                System.err.println("BookPlugin: UIController not found");
                 return false;
             }
             
-            // Create the book management view
             BookListView bookListView = new BookListView();
             
-            // Create menu item
-            boolean menuCreated = uiController.createMenuItem("Cadastros", "Livros") != null;
+            boolean menuCreated = uiController.createMenuItem("Registrations", "Books") != null;
             
             // Create tab
-            boolean tabCreated = uiController.createTab("Livros", bookListView);
+            boolean tabCreated = uiController.createTab("Books", bookListView);
             
             if (menuCreated && tabCreated) {
-                System.out.println("BookPlugin: Plugin inicializado com sucesso");
+                System.out.println("BookPlugin: Plugin initialized successfully");
                 return true;
             } else {
-                System.err.println("BookPlugin: Erro ao criar interface do usuário");
+                System.err.println("BookPlugin: Error creating user interface");
                 return false;
             }
             
         } catch (Exception e) {
-            System.err.println("BookPlugin: Erro durante inicialização - " + e.getMessage());
+            System.err.println("BookPlugin: Error during initialization" + e.getMessage());
             return false;
         }
     }
@@ -52,10 +48,10 @@ public class BookPlugin implements IPlugin {
     private void showDatabaseError() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Conexão");
-            alert.setHeaderText("Não foi possível conectar ao banco de dados");
-            alert.setContentText("Verifique se o servidor MariaDB está rodando na porta 3307\n" +
-                               "e se o banco 'bookstore' existe.");
+            alert.setTitle("Connection Error");
+            alert.setHeaderText("Could not connect to database");
+            alert.setContentText("Check if the MariaDB server is running on port 3307\n" +
+                               "and if the 'bookstore' bank exists.");
             alert.showAndWait();
         });
     }
