@@ -26,12 +26,12 @@ public class UserFormDialog extends Dialog<User> {
         formComponent = new UserFormComponent(null); // Pass null for callback
         
         if (originalUser != null) {
-            setTitle("Editar Usuário");
-            setHeaderText("Edite as informações do usuário");
+            setTitle("Edit User");
+            setHeaderText("Edit user information");
             formComponent.setUser(originalUser);
         } else {
-            setTitle("Novo Usuário");
-            setHeaderText("Adicione um novo usuário");
+            setTitle("New User");
+            setHeaderText("Add a new user");
             formComponent.clearForm();
         }
     }
@@ -42,37 +42,31 @@ public class UserFormDialog extends Dialog<User> {
         
         getDialogPane().setContent(formComponent);
         
-        // Add custom buttons
-        ButtonType saveButtonType = new ButtonType("Salvar", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancelButtonType = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         getDialogPane().getButtonTypes().addAll(saveButtonType, cancelButtonType);
         
-        // Set the result converter to properly handle button types
         setResultConverter(buttonType -> {
             if (buttonType == saveButtonType) {
                 User user = formComponent.getCurrentUser();
                 if (user != null && formComponent.validateInput()) {
-                    // Validate email uniqueness
                     if (isEmailTaken(user)) {
                         showEmailError();
-                        return null; // Don't close dialog
+                        return null;
                     }
                     return user;
                 }
-                return null; // Don't close dialog on validation failure
+                return null;
             }
-            return null; // Cancel or close
+            return null;
         });
         
-        // Get the actual buttons for additional configuration
         Button saveButton = (Button) getDialogPane().lookupButton(saveButtonType);
         Button cancelButton = (Button) getDialogPane().lookupButton(cancelButtonType);
         
-        // Set initial button state
         saveButton.setDisable(true);
         formComponent.setValidationCallback((isValid) -> saveButton.setDisable(!isValid));
         
-        // Focus on name field when dialog opens
         setOnShown(e -> formComponent.focusNameField());
     }
     
@@ -81,24 +75,23 @@ public class UserFormDialog extends Dialog<User> {
             int excludeId = originalUser != null ? originalUser.getId() : -1;
             return userDAO.emailExists(user.getEmail(), excludeId);
         } catch (Exception e) {
-            showDatabaseError("Erro ao verificar email", e);
-            return true; // Assume taken to prevent save on error
+            showDatabaseError("Error checking email", e);
+            return true;
         }
     }
     
     private void showEmailError() {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-        alert.setTitle("Email já existe");
-        alert.setHeaderText("Email já cadastrado");
-        alert.setContentText("Já existe um usuário cadastrado com este email. Por favor, use um email diferente.");
+        alert.setTitle("Email already exists");
+        alert.setHeaderText("Email already registered");
         alert.showAndWait();
     }
     
     private void showDatabaseError(String title, Exception e) {
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
-        alert.setTitle("Erro de Sistema");
+        alert.setTitle("System Error");
         alert.setHeaderText(title);
-        alert.setContentText("Erro ao acessar a base de dados: " + e.getMessage());
+        alert.setContentText("Error accessing the database: " + e.getMessage());
         alert.showAndWait();
     }
 }

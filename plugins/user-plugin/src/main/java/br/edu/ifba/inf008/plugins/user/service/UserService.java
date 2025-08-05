@@ -31,27 +31,24 @@ public class UserService {
     public ValidationResult validateUser(User user, boolean isUpdate) {
         ValidationResult result = new ValidationResult();
         
-        // Validate name
         if (user.getName() == null || user.getName().trim().isEmpty()) {
-            result.addError("Nome é obrigatório");
+            result.addError("Name is mandatory");
         } else if (user.getName().trim().length() < 2) {
-            result.addError("Nome deve ter pelo menos 2 caracteres");
-        } else if (user.getName().trim().length() > 100) {
-            result.addError("Nome deve ter no máximo 100 caracteres");
+            result.addError("Name must be at least 2 characters long");
+        } else if (user.getName().trim().length() > 50) {
+            result.addError("Name must have a maximum of 50 characters");
         }
         
-        // Validate email
         if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
-            result.addError("Email é obrigatório");
+            result.addError("Email is mandatory");
         } else if (!isValidEmail(user.getEmail().trim())) {
-            result.addError("Email deve ter um formato válido");
-        } else if (user.getEmail().trim().length() > 255) {
-            result.addError("Email deve ter no máximo 255 caracteres");
+            result.addError("Email must be in a valid format");
+        } else if (user.getEmail().trim().length() > 100) {
+            result.addError("Email must have a maximum of 100 characters");
         } else {
-            // Check email uniqueness
             int excludeId = isUpdate ? user.getId() : -1;
             if (userDAO.emailExists(user.getEmail().trim(), excludeId)) {
-                result.addError("Email já está em uso por outro usuário");
+                result.addError("Email is already in use by another user");
             }
         }
         
@@ -61,7 +58,7 @@ public class UserService {
     public boolean createUser(User user) {
         ValidationResult validation = validateUser(user, false);
         if (!validation.isValid()) {
-            throw new IllegalArgumentException("Dados inválidos: " + validation.getErrorsAsString());
+            throw new IllegalArgumentException("Invalid data: " + validation.getErrorsAsString());
         }
         
         return userDAO.insert(user);
@@ -70,9 +67,8 @@ public class UserService {
     public boolean updateUser(User user) {
         ValidationResult validation = validateUser(user, true);
         if (!validation.isValid()) {
-            throw new IllegalArgumentException("Dados inválidos: " + validation.getErrorsAsString());
+            throw new IllegalArgumentException("Invalid data: " + validation.getErrorsAsString());
         }
-        
         return userDAO.update(user);
     }
     
@@ -83,7 +79,6 @@ public class UserService {
     private boolean isValidEmail(String email) {
         return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
     }
-    
     public static class ValidationResult {
         private final List<String> errors;
         

@@ -31,10 +31,10 @@ public class UserFormComponent extends VBox {
     
     private void initializeComponents() {
         nameField = new TextField();
-        nameField.setPromptText("Nome do usuário");
+        nameField.setPromptText("User name");
         
         emailField = new TextField();
-        emailField.setPromptText("Email do usuário");
+        emailField.setPromptText("User email");
     }
     
     private void setupLayout() {
@@ -45,7 +45,7 @@ public class UserFormComponent extends VBox {
         formGrid.setHgap(10);
         formGrid.setVgap(10);
         
-        formGrid.add(new Label("Nome:"), 0, 0);
+        formGrid.add(new Label("Name:"), 0, 0);
         formGrid.add(nameField, 1, 0);
         formGrid.add(new Label("Email:"), 0, 1);
         formGrid.add(emailField, 1, 1);
@@ -57,9 +57,12 @@ public class UserFormComponent extends VBox {
     }
     
     private void setupEvents() {
-        // Validation listeners
-        nameField.textProperty().addListener((obs, oldVal, newVal) -> validateForm());
-        emailField.textProperty().addListener((obs, oldVal, newVal) -> validateForm());
+        nameField.textProperty().addListener((obs,
+                                              oldVal,
+                                              newVal) -> validateForm());
+        emailField.textProperty().addListener((obs,
+                                               oldVal,
+                                               newVal) -> validateForm());
     }
     
     private void validateForm() {
@@ -67,14 +70,14 @@ public class UserFormComponent extends VBox {
                          !emailField.getText().trim().isEmpty() &&
                          isValidEmail(emailField.getText().trim());
         
-        // Notify external validation callback
         if (validationCallback != null) {
             validationCallback.accept(isValid);
         }
         
-        // Visual feedback for invalid fields
         updateFieldStyle(nameField, !nameField.getText().trim().isEmpty());
-        updateFieldStyle(emailField, !emailField.getText().trim().isEmpty() && isValidEmail(emailField.getText().trim()));
+        updateFieldStyle(emailField,
+                 !emailField.getText().trim().isEmpty() &&
+                        isValidEmail(emailField.getText().trim()));
     }
     
     private void updateFieldStyle(TextField field, boolean isValid) {
@@ -96,17 +99,17 @@ public class UserFormComponent extends VBox {
         StringBuilder errors = new StringBuilder();
         
         if (nameField.getText().trim().isEmpty()) {
-            errors.append("- Nome é obrigatório\n");
+            errors.append("Name is mandatory\n");
             nameField.setStyle("-fx-border-color: #f44336; -fx-border-width: 2px;");
         } else {
             nameField.setStyle("-fx-border-color: #4CAF50; -fx-border-width: 1px;");
         }
         
         if (emailField.getText().trim().isEmpty()) {
-            errors.append("- Email é obrigatório\n");
+            errors.append("Email is mandatory\n");
             emailField.setStyle("-fx-border-color: #f44336; -fx-border-width: 2px;");
         } else if (!isValidEmail(emailField.getText().trim())) {
-            errors.append("- Email deve ter um formato válido\n"); 
+            errors.append("Email must have a valid format\n");
             emailField.setStyle("-fx-border-color: #f44336; -fx-border-width: 2px;");
         } else {
             emailField.setStyle("-fx-border-color: #4CAF50; -fx-border-width: 1px;");
@@ -114,13 +117,12 @@ public class UserFormComponent extends VBox {
         
         if (errors.length() > 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Validação");
-            alert.setHeaderText("Por favor, corrija os seguintes erros:");
+            alert.setTitle("Validation Error");
+            alert.setHeaderText("Correct the following errors:");
             alert.setContentText(errors.toString());
             alert.showAndWait();
             return false;
         }
-        
         return true;
     }
     

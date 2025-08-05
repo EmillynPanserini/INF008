@@ -1,7 +1,7 @@
 /* User Plugin Styles */
 
 .btn-primary {
-  -fx-background-color: #007bff;
+  -fx-background-color: #C6A7F2;
   -fx-text-fill: white;
   -fx-font-weight: bold;
   -fx-background-radius: 4;
@@ -9,11 +9,11 @@
 }
 
 .btn-primary:hover {
-  -fx-background-color: #0056b3;
+  -fx-background-color: #9765e1;
 }
 
 .btn-primary:pressed {
-  -fx-background-color: #004085;
+  -fx-background-color: #3C0F59;
 }
 
 .btn-danger {
@@ -39,12 +39,12 @@
 }
 
 .table-view .column-header {
-  -fx-background-color: #f8f9fa;
-  -fx-border-color: #dee2e6;
+  -fx-background-color: #C6A7F2;
+  -fx-border-color: #C6A7F2;
 }
 
 .table-row-cell:selected {
-  -fx-background-color: #007bff;
+  -fx-background-color: #8243D9;
   -fx-text-fill: white;
 }
 
@@ -56,10 +56,10 @@
 }
 
 .text-field:focused {
-  -fx-border-color: #80bdff;
-  -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.25), 4, 0, 0, 0);
+  -fx-border-color: #C6A7F2;
+  -fx-effect: dropshadow(gaussian, rgba(198, 167, 242, 0.25), 4, 0, 0, 0);
 }
 
 .progress-indicator {
-  -fx-progress-color: #007bff;
+  -fx-progress-color: #8243D9;
 }

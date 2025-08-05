@@ -13,38 +13,33 @@ public class UserPlugin implements IPlugin {
     @Override
     public boolean init() {
         try {
-            // Test database connection
             if (!DatabaseConnection.testConnection()) {
                 showDatabaseError();
                 return false;
             }
             
-            // Get UI controller from core
             IUIController uiController = ICore.getInstance().getUIController();
             if (uiController == null) {
-                System.err.println("UserPlugin: UIController não encontrado");
+                System.err.println("UserPlugin: UIController not found");
                 return false;
             }
-            
-            // Create the user management view
+
             UserListView userListView = new UserListView();
             
-            // Create menu item
-            boolean menuCreated = uiController.createMenuItem("Cadastros", "Usuários") != null;
+            boolean menuCreated = uiController.createMenuItem("Registrations", "Users") != null;
             
-            // Create tab
-            boolean tabCreated = uiController.createTab("Usuários", userListView);
+            boolean tabCreated = uiController.createTab("Users", userListView);
             
             if (menuCreated && tabCreated) {
-                System.out.println("UserPlugin: Plugin inicializado com sucesso");
+                System.out.println("UserPlugin: Plugin initialized successfully");
                 return true;
             } else {
-                System.err.println("UserPlugin: Erro ao criar interface do usuário");
+                System.err.println("UserPlugin: Error creating user interface");
                 return false;
             }
             
         } catch (Exception e) {
-            System.err.println("UserPlugin: Erro durante inicialização - " + e.getMessage());
+            System.err.println("UserPlugin: Error during initialization " + e.getMessage());
             return false;
         }
     }
@@ -52,10 +47,10 @@ public class UserPlugin implements IPlugin {
     private void showDatabaseError() {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro de Conexão");
-            alert.setHeaderText("Não foi possível conectar ao banco de dados");
-            alert.setContentText("Verifique se o servidor MariaDB está rodando na porta 3307\n" +
-                               "e se o banco 'bookstore' existe.");
+            alert.setTitle("Connection Error");
+            alert.setHeaderText("Could not connect to database");
+            alert.setContentText("Check if the MariaDB server is running on port 3307\n" +
+                               "and whether the 'bookstore' bank exists.");
             alert.showAndWait();
         });
     }

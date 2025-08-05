@@ -37,23 +37,24 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
         progressIndicator.setVisible(false);
         progressIndicator.setMaxSize(50, 50);
         
-        statusLabel = new Label("Carregando usuários...");
+        statusLabel = new Label("Loading users");
         statusLabel.setVisible(false);
     }
     
     private void setupLayout() {
         setPadding(new Insets(10));
         
-        // Title
-        Label titleLabel = new Label("Gerenciamento de Usuários");
+
+        Label titleLabel = new Label("User Management");
         titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
         
-        // Status bar with consistent styling
         VBox statusBox = new VBox(5);
         statusBox.getChildren().addAll(progressIndicator, statusLabel);
-        statusBox.setStyle("-fx-alignment: center; -fx-background-color: #f5f5f5; -fx-border-radius: 5; -fx-padding: 10;");
-        
-        // Main layout with consistent spacing and styling
+        statusBox.setStyle("-fx-alignment: center; " +
+                           "-fx-background-color: #f5f5f5; " +
+                           "-fx-border-radius: 5; " +
+                           "-fx-padding: 10;");
+
         VBox mainContent = new VBox(10);
         mainContent.getChildren().addAll(titleLabel, userTable, statusBox);
         VBox.setVgrow(userTable, Priority.ALWAYS);
@@ -62,7 +63,7 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
     }
     
     private void loadUsers() {
-        showLoading(true, "Carregando usuários...");
+        showLoading(true, "Loading users");
         
         Task<List<User>> task = new Task<List<User>>() {
             @Override
@@ -74,17 +75,16 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
             protected void succeeded() {
                 userTable.setUsers(getValue());
                 showLoading(false, null);
-                updateStatusLabel(getValue().size() + " usuário(s) encontrado(s)");
+                updateStatusLabel(getValue().size() + "User(s) found");
             }
             
             @Override
             protected void failed() {
                 showLoading(false, null);
-                showError("Erro ao carregar usuários", getException());
-                updateStatusLabel("Erro ao carregar dados");
+                showError("Error loading users", getException());
+                updateStatusLabel("Error loading data");
             }
         };
-        
         new Thread(task).start();
     }
     
@@ -94,7 +94,7 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
             return;
         }
         
-        showLoading(true, "Pesquisando usuários...");
+        showLoading(true, "Searching users");
         
         Task<List<User>> task = new Task<List<User>>() {
             @Override
@@ -106,17 +106,16 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
             protected void succeeded() {
                 userTable.setUsers(getValue());
                 showLoading(false, null);
-                updateStatusLabel(getValue().size() + " usuário(s) encontrado(s) para '" + searchText + "'");
+                updateStatusLabel(getValue().size() + " User(s) found for'" + searchText + "'");
             }
             
             @Override
             protected void failed() {
                 showLoading(false, null);
-                showError("Erro ao pesquisar usuários", getException());
-                updateStatusLabel("Erro na pesquisa");
+                showError("Error when searching for users", getException());
+                updateStatusLabel("Search error");
             }
         };
-        
         new Thread(task).start();
     }
     
@@ -134,19 +133,18 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
                 protected void succeeded() {
                     if (getValue()) {
                         userTable.addUser(user);
-                        showSuccess("Usuário adicionado com sucesso!");
-                        updateStatusLabel("Usuário adicionado");
+                        showSuccess("User added successfully");
+                        updateStatusLabel("User added");
                     } else {
-                        showError("Erro ao adicionar usuário", null);
+                        showError("Error adding user", null);
                     }
                 }
                 
                 @Override
                 protected void failed() {
-                    showError("Erro ao adicionar usuário", getException());
+                    showError("Error adding user", getException());
                 }
             };
-            
             new Thread(task).start();
         });
     }
@@ -165,19 +163,18 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
                 protected void succeeded() {
                     if (getValue()) {
                         userTable.updateUser(updatedUser);
-                        showSuccess("Usuário atualizado com sucesso!");
-                        updateStatusLabel("Usuário atualizado");
+                        showSuccess("User updated successfully");
+                        updateStatusLabel("User updated");
                     } else {
-                        showError("Erro ao atualizar usuário", null);
+                        showError("Error updating user", null);
                     }
                 }
                 
                 @Override
                 protected void failed() {
-                    showError("Erro ao atualizar usuário", getException());
+                    showError("Error updating user", getException());
                 }
             };
-            
             new Thread(task).start();
         });
     }
@@ -194,16 +191,16 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
             protected void succeeded() {
                 if (getValue()) {
                     userTable.removeUser(user);
-                    showSuccess("Usuário excluído com sucesso!");
-                    updateStatusLabel("Usuário excluído");
+                    showSuccess("User deleted successfully");
+                    updateStatusLabel("User deleted");
                 } else {
-                    showError("Erro ao excluir usuário", null);
+                    showError("Error deleting user", null);
                 }
             }
             
             @Override
             protected void failed() {
-                showError("Erro ao excluir usuário", getException());
+                showError("Error deleting user", getException());
             }
         };
         
@@ -234,7 +231,6 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
         statusLabel.setText(message);
         statusLabel.setVisible(true);
         
-        // Hide after 3 seconds
         Timeline timeline = new Timeline(new KeyFrame(
             Duration.seconds(3),
             e -> statusLabel.setVisible(false)
@@ -244,7 +240,7 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
     
     private void showSuccess(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Sucesso");
+        alert.setTitle("Successfully");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
@@ -252,7 +248,7 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
     
     private void showError(String message, Throwable exception) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro");
+        alert.setTitle("Error");
         alert.setHeaderText(message);
         
         if (exception != null) {

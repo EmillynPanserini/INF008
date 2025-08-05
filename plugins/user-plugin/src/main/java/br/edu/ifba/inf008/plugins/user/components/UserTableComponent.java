@@ -47,7 +47,7 @@ public class UserTableComponent extends VBox {
     private void initializeComponents() {
         // Search field
         searchField = new TextField();
-        searchField.setPromptText("Pesquisar por nome...");
+        searchField.setPromptText("Search by name");
         
         // Table
         userTable = new TableView<>();
@@ -65,20 +65,35 @@ public class UserTableComponent extends VBox {
         
         setupTableColumns();
         
-        // Buttons with consistent styling
-        addButton = new Button("Adicionar");
-        addButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 8 16 8 16; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+        addButton = new Button("Add");
+        addButton.setStyle("-fx-background-color: #C6A7F2; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-padding: 8 16 8 16; " +
+                            "-fx-border-radius: 4px; " +
+                            "-fx-background-radius: 4px;");
         
-        editButton = new Button("Editar");
-        editButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 8 16 8 16; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+        editButton = new Button("Edit");
+        editButton.setStyle("-fx-background-color: #8243D9; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-padding: 8 16 8 16; " +
+                            "-fx-border-radius: 4px; " +
+                            "-fx-background-radius: 4px;");
         editButton.setDisable(true);
         
-        deleteButton = new Button("Excluir");
-        deleteButton.setStyle("-fx-background-color: #f44336; -fx-text-fill: white; -fx-padding: 8 16 8 16; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+        deleteButton = new Button("Delete");
+        deleteButton.setStyle("-fx-background-color: #170126; " +
+                              "-fx-text-fill: white; " +
+                              "-fx-padding: 8 16 8 16;" +
+                              "-fx-border-radius: 4px; " +
+                              "-fx-background-radius: 4px;");
         deleteButton.setDisable(true);
         
-        refreshButton = new Button("Atualizar");
-        refreshButton.setStyle("-fx-background-color: #FF9800; -fx-text-fill: white; -fx-padding: 8 16 8 16; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+        refreshButton = new Button("Refresh");
+        refreshButton.setStyle("-fx-background-color: #3C0F59; " +
+                               "-fx-text-fill: white;" +
+                               "-fx-padding: 8 16 8 16; " +
+                               "-fx-border-radius: 4px; " +
+                               "-fx-background-radius: 4px;");
     }
     
     private void setupTableColumns() {
@@ -87,7 +102,7 @@ public class UserTableComponent extends VBox {
         idColumn.setPrefWidth(50);
         idColumn.setResizable(false);
         
-        TableColumn<User, String> nameColumn = new TableColumn<>("Nome");
+        TableColumn<User, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         nameColumn.setPrefWidth(200);
         
@@ -95,7 +110,7 @@ public class UserTableComponent extends VBox {
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         emailColumn.setPrefWidth(250);
         
-        TableColumn<User, String> registeredColumn = new TableColumn<>("Data de Cadastro");
+        TableColumn<User, String> registeredColumn = new TableColumn<>("Registration Date");
         registeredColumn.setCellValueFactory(new PropertyValueFactory<>("registeredAt"));
         registeredColumn.setPrefWidth(150);
         
@@ -106,41 +121,37 @@ public class UserTableComponent extends VBox {
         setPadding(new Insets(10));
         setSpacing(10);
         
-        // Search bar
         HBox searchBox = new HBox(10);
         searchBox.getChildren().addAll(
-            new Label("Pesquisar:"), 
+            new Label("Search:"),
             searchField,
             refreshButton
         );
         HBox.setHgrow(searchField, Priority.ALWAYS);
         
-        // Button bar
         HBox buttonBox = new HBox(10);
         buttonBox.getChildren().addAll(addButton, editButton, deleteButton);
         
-        // Table
         VBox.setVgrow(userTable, Priority.ALWAYS);
         
         getChildren().addAll(searchBox, userTable, buttonBox);
     }
     
     private void setupEvents() {
-        // Selection listener
         userTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             boolean hasSelection = newSelection != null;
             editButton.setDisable(!hasSelection);
             deleteButton.setDisable(!hasSelection);
         });
         
-        // Button events
         addButton.setOnAction(e -> handleAdd());
         editButton.setOnAction(e -> handleEdit());
         deleteButton.setOnAction(e -> handleDelete());
         refreshButton.setOnAction(e -> handleRefresh());
         
-        // Search events
-        searchField.textProperty().addListener((obs, oldVal, newVal) -> {
+        searchField.textProperty().addListener((obs,
+                                                oldVal,
+                                                newVal) -> {
             if (callback != null) {
                 callback.onSearch(newVal);
             }
@@ -164,9 +175,12 @@ public class UserTableComponent extends VBox {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmAlert.setTitle("Confirmar Exclusão");
-            confirmAlert.setHeaderText("Deseja excluir o usuário?");
-            confirmAlert.setContentText("Nome: " + selectedUser.getName() + "\nEmail: " + selectedUser.getEmail());
+            confirmAlert.setTitle("Confirm Deletion");
+            confirmAlert.setHeaderText("Do you wanna delete the user?");
+            confirmAlert.setContentText("Name: " +
+                                        selectedUser.getName() +
+                                        "\nEmail: " +
+                                        selectedUser.getEmail());
             
             confirmAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK && callback != null) {

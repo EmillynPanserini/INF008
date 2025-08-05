@@ -22,7 +22,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar todos os usuários: " + e.getMessage());
+            System.err.println("Error searching all users: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -43,7 +43,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar usuário por ID: " + e.getMessage());
+            System.err.println("Error searching for user by ID: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -70,7 +70,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir usuário: " + e.getMessage());
+            System.err.println("Error inserting user: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -90,10 +90,9 @@ public class UserDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar usuário: " + e.getMessage());
+            System.err.println("Error updating user: " + e.getMessage());
             e.printStackTrace();
         }
-
         return false;
     }
 
@@ -107,7 +106,7 @@ public class UserDAO {
             return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar usuário: " + e.getMessage());
+            System.err.println("Error deleting user: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -129,7 +128,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar usuários por nome: " + e.getMessage());
+            System.err.println("Error searching for users by name: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -152,7 +151,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Erro ao verificar email existente: " + e.getMessage());
+            System.err.println("Error checking existing email: " + e.getMessage());
             e.printStackTrace();
         }
 
