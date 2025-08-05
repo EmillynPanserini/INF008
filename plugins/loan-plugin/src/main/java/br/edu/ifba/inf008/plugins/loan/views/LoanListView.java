@@ -38,34 +38,36 @@ public class LoanListView extends BorderPane {
     }
     
     private void initializeComponents() {
-        // Table setup with consistent styling
         loanTable = new TableView<>();
         loanTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         setupTableColumns();
         
-        // Search components
         searchField = new TextField();
-        searchField.setPromptText("Digite para pesquisar...");
-        searchField.textProperty().addListener((obs, oldText, newText) -> performSearch());
+        searchField.setPromptText("Type tp search");
+        searchField.textProperty().addListener((obs,
+                                                oldText,
+                                                newText) -> performSearch());
         
         searchTypeCombo = new ComboBox<>();
-        searchTypeCombo.getItems().addAll("Todos", "Usuário", "Livro");
-        searchTypeCombo.setValue("Todos");
+        searchTypeCombo.getItems().addAll("All", "User", "Book");
+        searchTypeCombo.setValue("All");
         searchTypeCombo.setOnAction(e -> performSearch());
         
-        activeOnlyCheckBox = new CheckBox("Apenas empréstimos ativos");
+        activeOnlyCheckBox = new CheckBox("Active loans only");
         activeOnlyCheckBox.setOnAction(e -> performSearch());
         
-        newLoanButton = new Button("Novo Empréstimo");
-        newLoanButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 8 16 8 16; -fx-border-radius: 4px; -fx-background-radius: 4px;");
+        newLoanButton = new Button("New Loan");
+        newLoanButton.setStyle("-fx-background-color: #C6A7F2; " +
+                               "-fx-text-fill: white; " +
+                               "-fx-padding: 8 16 8 16; " +
+                               "-fx-border-radius: 4px; -fx-background-radius: 4px;");
         newLoanButton.setOnAction(e -> showCreateLoanDialog());
         
-        // Progress and status
         progressIndicator = new ProgressIndicator();
         progressIndicator.setVisible(false);
         progressIndicator.setMaxSize(50, 50);
         
-        statusLabel = new Label("Carregando empréstimos...");
+        statusLabel = new Label("Loading loans");
         statusLabel.setVisible(false);
     }
     
@@ -75,22 +77,22 @@ public class LoanListView extends BorderPane {
             new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         idColumn.setPrefWidth(50);
         
-        TableColumn<Loan, String> userColumn = new TableColumn<>("Usuário");
+        TableColumn<Loan, String> userColumn = new TableColumn<>("User");
         userColumn.setCellValueFactory(cellData -> 
             new javafx.beans.property.SimpleStringProperty(cellData.getValue().getUserName()));
         userColumn.setPrefWidth(150);
         
-        TableColumn<Loan, String> bookColumn = new TableColumn<>("Livro");
+        TableColumn<Loan, String> bookColumn = new TableColumn<>("Book");
         bookColumn.setCellValueFactory(cellData -> 
             new javafx.beans.property.SimpleStringProperty(cellData.getValue().getBookTitle()));
         bookColumn.setPrefWidth(200);
         
-        TableColumn<Loan, String> loanDateColumn = new TableColumn<>("Data Empréstimo");
+        TableColumn<Loan, String> loanDateColumn = new TableColumn<>("Loan Date");
         loanDateColumn.setCellValueFactory(cellData -> 
             new javafx.beans.property.SimpleStringProperty(cellData.getValue().getLoanDate()));
         loanDateColumn.setPrefWidth(120);
         
-        TableColumn<Loan, String> returnDateColumn = new TableColumn<>("Data Devolução");
+        TableColumn<Loan, String> returnDateColumn = new TableColumn<>("Return Date");
         returnDateColumn.setCellValueFactory(cellData -> 
             new javafx.beans.property.SimpleStringProperty(cellData.getValue().getReturnDate()));
         returnDateColumn.setPrefWidth(120);
@@ -98,16 +100,16 @@ public class LoanListView extends BorderPane {
         TableColumn<Loan, String> statusColumn = new TableColumn<>("Status");
         statusColumn.setCellValueFactory(cellData -> 
             new javafx.beans.property.SimpleStringProperty(
-                cellData.getValue().isReturned() ? "Devolvido" : "Ativo"));
+                cellData.getValue().isReturned() ? "Returned" : "Active"));
         statusColumn.setPrefWidth(80);
         
         // Action column with consistent button styling
-        TableColumn<Loan, Void> actionColumn = new TableColumn<>("Ações");
+        TableColumn<Loan, Void> actionColumn = new TableColumn<>("Actions");
         actionColumn.setCellFactory(param -> new TableCell<Loan, Void>() {
-            private final Button returnButton = new Button("Devolver");
+            private final Button returnButton = new Button("Give back");
             
             {
-                returnButton.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-border-radius: 3px; -fx-background-radius: 3px;");
+                returnButton.setStyle("-fx-background-color: #C6A7F2; -fx-text-fill: white; -fx-padding: 4 8 4 8; -fx-border-radius: 3px; -fx-background-radius: 3px;");
                 returnButton.setOnAction(event -> {
                     Loan loan = getTableView().getItems().get(getIndex());
                     if (!loan.isReturned()) {

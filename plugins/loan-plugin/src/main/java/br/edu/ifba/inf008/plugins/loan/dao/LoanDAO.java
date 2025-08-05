@@ -33,7 +33,6 @@ public class LoanDAO {
                 loan.setBookTitle(rs.getString("book_title"));
                 loan.setLoanDate(rs.getString("loan_date"));
                 loan.setReturnDate(rs.getString("return_date"));
-                // Set returned based on whether return_date is null or not
                 loan.setReturned(rs.getString("return_date") != null);
                 loans.add(loan);
             }
@@ -65,7 +64,7 @@ public class LoanDAO {
                 loan.setBookTitle(rs.getString("book_title"));
                 loan.setLoanDate(rs.getString("loan_date"));
                 loan.setReturnDate(rs.getString("return_date"));
-                loan.setReturned(false); // All active loans are not returned
+                loan.setReturned(false);
                 loans.add(loan);
             }
         }
@@ -130,7 +129,6 @@ public class LoanDAO {
                 }
             }
         }
-        
         return loans;
     }
     
@@ -164,8 +162,6 @@ public class LoanDAO {
                 }
             }
         }
-        
-
         return loans;
     }
 }

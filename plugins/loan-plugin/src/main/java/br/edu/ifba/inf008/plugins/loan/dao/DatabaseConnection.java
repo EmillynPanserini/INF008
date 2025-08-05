@@ -17,7 +17,7 @@ public class DatabaseConnection {
         try (Connection conn = getConnection()) {
             return conn != null && !conn.isClosed();
         } catch (SQLException e) {
-            System.err.println("Erro ao conectar com o banco de dados: " + e.getMessage());
+            System.err.println("Error connecting to database: " + e.getMessage());
             return false;
         }
     }
