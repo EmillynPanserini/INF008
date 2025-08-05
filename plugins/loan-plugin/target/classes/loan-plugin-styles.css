@@ -55,7 +55,7 @@
 .loan-form .combo-box:focused,
 .loan-form .date-picker:focused,
 .loan-form .text-field:focused {
-  -fx-border-color: #8243D9;
+  -fx-border-color: #ffff;
   -fx-effect: dropshadow(gaussian, rgba(198, 167, 242, 1), 4, 0, 0, 0);
 }
 

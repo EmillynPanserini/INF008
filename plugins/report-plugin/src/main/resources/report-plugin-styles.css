@@ -1,0 +1,15 @@
+.table-view {
+    -fx-border-color: #ad7af4;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+}
+
+.table-view .column-header {
+    -fx-background-color: #C6A7F2;
+    -fx-border-color: #C6A7F2;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #8243D9;
+    -fx-text-fill: white;
+}

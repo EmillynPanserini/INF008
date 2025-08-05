@@ -51,7 +51,7 @@ public class UserListView extends BorderPane implements UserTableComponent.UserT
         VBox statusBox = new VBox(5);
         statusBox.getChildren().addAll(progressIndicator, statusLabel);
         statusBox.setStyle("-fx-alignment: center; " +
-                           "-fx-background-color: #f5f5f5; " +
+                           "-fx-background-color: #ad7af4; " +
                            "-fx-border-radius: 5; " +
                            "-fx-padding: 10;");
 

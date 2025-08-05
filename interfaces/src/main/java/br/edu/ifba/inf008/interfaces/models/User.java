@@ -21,17 +21,31 @@ public class User {
         this.email = email;
     }
 
-    // Getters
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getEmail() { return email; }
-    public String getRegisteredAt() { return registeredAt; }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
 
-    // Setters
-    public void setId(int id) { this.id = id; }
-    public void setName(String name) { this.name = name; }
-    public void setEmail(String email) { this.email = email; }
-    public void setRegisteredAt(String registeredAt) { this.registeredAt = registeredAt; }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setRegisteredAt(String registeredAt) {
+        this.registeredAt = registeredAt;
+    }
 
     @Override
     public String toString() {

@@ -45,11 +45,9 @@ public class UserTableComponent extends VBox {
     }
     
     private void initializeComponents() {
-        // Search field
         searchField = new TextField();
         searchField.setPromptText("Search by name");
         
-        // Table
         userTable = new TableView<>();
         userTable.setItems(users);
         userTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -66,7 +64,7 @@ public class UserTableComponent extends VBox {
         setupTableColumns();
         
         addButton = new Button("Add");
-        addButton.setStyle("-fx-background-color: #C6A7F2; " +
+        addButton.setStyle("-fx-background-color: #7845BF; " +
                             "-fx-text-fill: white; " +
                             "-fx-padding: 8 16 8 16; " +
                             "-fx-border-radius: 4px; " +

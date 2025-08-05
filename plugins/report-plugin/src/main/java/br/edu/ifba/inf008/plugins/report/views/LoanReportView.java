@@ -41,7 +41,6 @@ public class LoanReportView extends VBox {
     private Button clearButton;
     private Button exportButton;
     
-    // Stats labels
     private Label totalLoansLabel;
     private Label activeLoansLabel;
     private Label returnedLoansLabel;
@@ -102,7 +101,6 @@ public class LoanReportView extends VBox {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         idColumn.setPrefWidth(50);
         
-        // User Column
         TableColumn<Loan, String> userColumn = new TableColumn<>("User");
         userColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
         userColumn.setPrefWidth(150);

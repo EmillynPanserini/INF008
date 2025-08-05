@@ -32,14 +32,14 @@ public class UIController extends Application implements IUIController {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Library management system");
+        primaryStage.setTitle("Library Management System");
 
         menuBar = new MenuBar();
         tabPane = new TabPane();
         tabPane.setSide(Side.TOP);
 
         VBox vBox = new VBox(menuBar, tabPane);
-        Scene scene = new Scene(vBox, 960, 600);
+        Scene scene = new Scene(vBox, 900, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
 
