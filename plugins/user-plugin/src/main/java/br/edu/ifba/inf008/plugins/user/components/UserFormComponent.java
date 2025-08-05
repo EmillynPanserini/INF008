@@ -1,6 +1,6 @@
 package br.edu.ifba.inf008.plugins.user.components;
 
-import br.edu.ifba.inf008.plugins.user.model.User;
+import br.edu.ifba.inf008.interfaces.models.User;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;

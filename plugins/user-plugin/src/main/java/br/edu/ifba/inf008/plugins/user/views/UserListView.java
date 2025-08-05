@@ -13,7 +13,7 @@ import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 import br.edu.ifba.inf008.plugins.user.components.UserTableComponent;
 import br.edu.ifba.inf008.plugins.user.dao.UserDAO;
-import br.edu.ifba.inf008.plugins.user.model.User;
+import br.edu.ifba.inf008.interfaces.models.User;
 
 import java.util.List;
 

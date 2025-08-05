@@ -1,6 +1,6 @@
 package br.edu.ifba.inf008.plugins.user.components;
 
-import br.edu.ifba.inf008.plugins.user.model.User;
+import br.edu.ifba.inf008.interfaces.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

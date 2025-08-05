@@ -1,4 +1,4 @@
-package br.edu.ifba.inf008.plugins.user.model;
+package br.edu.ifba.inf008.interfaces.models;
 
 public class User {
     private int id;

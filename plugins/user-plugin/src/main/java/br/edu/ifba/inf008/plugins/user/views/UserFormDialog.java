@@ -2,7 +2,7 @@ package br.edu.ifba.inf008.plugins.user.views;
 
 import br.edu.ifba.inf008.plugins.user.components.UserFormComponent;
 import br.edu.ifba.inf008.plugins.user.dao.UserDAO;
-import br.edu.ifba.inf008.plugins.user.model.User;
+import br.edu.ifba.inf008.interfaces.models.User;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;

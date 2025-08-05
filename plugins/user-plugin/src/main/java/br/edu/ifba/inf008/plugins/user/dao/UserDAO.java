@@ -1,6 +1,6 @@
 package br.edu.ifba.inf008.plugins.user.dao;
 
-import br.edu.ifba.inf008.plugins.user.model.User;
+import br.edu.ifba.inf008.interfaces.models.User;
 
 import java.sql.*;
 import java.util.ArrayList;
