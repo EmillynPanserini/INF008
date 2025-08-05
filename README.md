@@ -1,8 +1,7 @@
 
-Library management system implemented using microkernel architecture with JavaFX and MariaDB.
-##  Execução do Projeto
+## Library management system implemented using microkernel architecture with JavaFX and MariaDB.
 
-### Comandos de Execução
+###  Execution Commands
 
 ```bash
 # 1. Navigate to the project directory
